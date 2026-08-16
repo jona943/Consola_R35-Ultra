@@ -1,0 +1,7 @@
+# Configuración limpia y optimizada para ROCKNIX (Edición EE-Clone)
+# Eliminada la opción systemd.debug_shell=ttyS2 para un arranque 100% silencioso y sin errores.
+LABEL ROCKNIX
+  LINUX /KERNEL
+  FDTDIR /
+  FDTOVERLAYS /overlays/mipi-panel.dtbo
+  APPEND boot=${partition_boot} disk=${partition_storage} quiet console=tty0 uboot.hwid_adc=${hwid_adc}

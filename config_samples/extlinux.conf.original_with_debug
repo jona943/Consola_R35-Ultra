@@ -1,0 +1,7 @@
+# Configuración original por defecto de ROCKNIX
+# Nota: systemd.debug_shell=ttyS2 causaba el error [FAILED] Failed to start debug-shell.service
+LABEL ROCKNIX
+  LINUX /KERNEL
+  FDTDIR /
+  FDTOVERLAYS /overlays/mipi-panel.dtbo
+  APPEND boot=${partition_boot} disk=${partition_storage} quiet console=ttyS2,1500000 console=tty0 systemd.debug_shell=ttyS2 uboot.hwid_adc=${hwid_adc}

@@ -1,0 +1,74 @@
+# ==============================================================================
+# .gitignore - Repositorio R35 Ultra (2025/2026)
+# ==============================================================================
+
+# 1. Imágenes de Sistemas Operativos y Archivos de Disco Pesados (> 500 MB)
+*.img
+*.img.gz
+*.img.xz
+*.iso
+*.vdi
+*.qcow2
+images/
+
+# 2. Archivos de Juegos y ROMs Pesadas
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.tar.xz
+*.bin
+*.cue
+*.cdi
+*.chd
+*.cso
+*.pbp
+*.z64
+*.n64
+*.v64
+*.nds
+*.gba
+*.gbc
+*.gb
+*.nes
+*.sfc
+*.smc
+*.gen
+*.pce
+
+# 3. Respaldo de Colección Curada Local (18 GB)
+copia_r35Ultra/
+
+# 4. Archivos Temporales del Sistema y Logs
+*.log
+*.tmp
+*.bak
+*~
+.DS_Store
+Thumbs.db
+lost+found/
+
+# 5. Entornos y Cachés de Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+
+# ==============================================================================
+# EXCEPCIONES: Conservar documentación, scripts y configuraciones ligeras
+# ==============================================================================
+!*.md
+!*.sh
+!*.py
+!*.xml
+!*.conf
+!*.ini
+!*.dtb
+!*.dtbo
+!docs/
+!scripts/
+!config_samples/
+!dtb_r36ultra/

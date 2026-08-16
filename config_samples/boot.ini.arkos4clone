@@ -1,0 +1,14 @@
+# ArkOS boot.ini utilizado para pruebas en clones R36/R35 Ultra
+# Configuración de frecuencias y parámetros de arranque del Kernel Linux 4.4 legacy
+ODROIDGO2-UBOOT-CONFIG
+
+setenv max_cpufreq "1296"
+setenv boot_cpufreq "1248"
+setenv max_ddrfreq "666"
+
+setenv bootargs "earlyprintk console=tty1 quiet loglevel=0 consoleblank=0 fbcon=rotate:0 ro root=LABEL=ROMS rootwait fbcon=primary:0 max_cpufreq=${max_cpufreq} boot_cpufreq=${boot_cpufreq} max_ddrfreq=${max_ddrfreq}"
+
+# Carga de Kernel y DTB
+load mmc 1:1 0x02000000 Image
+load mmc 1:1 0x01f00000 rk3326-r36ultra-linux.dtb
+booti 0x02000000 - 0x01f00000

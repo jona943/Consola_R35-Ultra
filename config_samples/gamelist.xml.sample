@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<gameList>
+	<game>
+		<path>./Super Mario World (USA).zip</path>
+		<name>Super Mario World</name>
+		<desc>Mario y Luigi viajan a Dinosaur Land para rescatar a la Princesa Peach de Bowser y sus Koopalings.</desc>
+		<image>./images/Super Mario World (USA).png</image>
+		<rating>0.95</rating>
+		<releasedate>19901121T000000</releasedate>
+		<developer>Nintendo</developer>
+		<publisher>Nintendo</publisher>
+		<genre>Platform</genre>
+		<players>1-2</players>
+	</game>
+	<game>
+		<path>./Crash Bandicoot (USA).cue</path>
+		<name>Crash Bandicoot</name>
+		<desc>El clásico plataformero 3D de PlayStation donde Crash debe detener los planes del Dr. Neo Cortex.</desc>
+		<image>./images/Crash Bandicoot (USA).png</image>
+		<rating>0.9</rating>
+		<releasedate>19960909T000000</releasedate>
+		<developer>Naughty Dog</developer>
+		<publisher>Sony Computer Entertainment</publisher>
+		<genre>Platform</genre>
+		<players>1</players>
+	</game>
+</gameList>
