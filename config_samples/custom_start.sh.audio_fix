@@ -1,0 +1,9 @@
+#!/bin/bash
+# Activador de amplificador y canales ALSA para RK3326 EE-Clones
+sleep 1
+amixer sset 'Playback Path' 'SPK' 2>/dev/null || amixer sset 'Playback Path' 'Speaker' 2>/dev/null || true
+amixer sset 'Master' 95% unmute 2>/dev/null || true
+amixer sset 'Playback' 95% unmute 2>/dev/null || true
+amixer sset 'Speaker' 95% unmute 2>/dev/null || true
+amixer sset 'Headphone' 95% unmute 2>/dev/null || true
+amixer sset 'Digital' 95% unmute 2>/dev/null || true

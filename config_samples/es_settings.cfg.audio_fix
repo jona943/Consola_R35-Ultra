@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+  <string name="AudioCard" value="default" />
+  <string name="AudioDevice" value="Playback" />
+  <int name="AudioVolume" value="95" />
+  <bool name="AudioEnable" value="true" />
+  <bool name="NavigationSounds" value="true" />
+  <bool name="VideoAudio" value="true" />
+</config>
