@@ -1,6 +1,6 @@
 # Memoria Tecnica Integral del Proyecto: R35 Ultra (2025/2026)
 
-Este documento es el registro maestro y memoria tecnica de todo el trabajo de diagnostico, ingenieria de compatibilidad de hardware, instalacion de sistema operativo, resolucion de video y audio, y curacion de juegos realizado en la consola portatil R35 Ultra.
+Este documento es el registro maestro y memoria tecnica de todo el trabajo de diagnostico, ingenieria de compatibilidad de hardware, instalacion de sistema operativo, resolucion de video y audio en vivo por SSH, y curacion de juegos realizado en la consola portatil R35 Ultra.
 
 ---
 
@@ -30,17 +30,53 @@ Durante el proceso de pruebas se descubrio el motivo exacto por el cual las imag
 
 ---
 
-## 3. Resolucion del Sistema de Audio (Codec RK817)
+## 3. Resolucion y Calibracion del Audio en Vivo por SSH
 
-### Diagnostico del Problema de Audio:
-Al arrancar ROCKNIX en consolas clones EE-Clones de 2025, el sistema no emite ningun sonido por el altavoz integrado.
-* Causa: El subsistema de sonido ALSA por defecto utiliza perfiles UCM (Use Case Manager) que esperan una senal de deteccion de hardware en el conector jack de 3.5mm. En estas placas clones, ese pin no esta cableado o permanece flotante, haciendo que el sistema desactive la ruta de reproduccion del altavoz interno (`Playback Path = OFF` o `Playback Mux`).
+### Diagnostico de la Falla de Audio:
+Al inicializar la consola, no se producia ningun sonido ni en los menus ni en los juegos. Mediante la inspeccion en vivo por SSH ejecutando `amixer -c 0 contents`, se descubrio la causa raiz:
+* Control `numid=6,name='Playback Mux'` tenia asignado el valor `0` correspondiente a `HP` (Headphones / Audifonos).
+* El sistema ALSA enviaba el flujo de audio a la salida de audifonos debido a que el sensor fisico del jack en las placas clones de 2025 permanece flotante.
 
-### Solucion de Ingenieria Aplicada:
-1. Enrutamiento directo SPK: Se configuro `/storage/.config/profile.d/001-device_config` con `AUDIO_MANAGEMENT=legacy` y `002-audio_path` con `DEVICE_PLAYBACK_PATH="SPK"`.
-2. Inicializacion automatica del amplificador: Se implemento el script `/storage/.config/custom_start.sh` que ejecuta `amixer` al arrancar para desmutear los canales `Master`, `Speaker` y `Playback` al 95% de volumen.
-3. Configuracion de EmulationStation: Se fijo `AudioDevice=Playback` y volumen al 95% en `/storage/.config/emulationstation/es_settings.cfg`.
-4. Script Automatizado: Creado `activar_audio_r35ultra.sh` para aplicar esta calibracion de forma inmediata.
+### Comandos de Diagnostico y Reparacion por SSH:
+1. Conexion remota:
+   ```bash
+   ssh root@IP_DE_LA_CONSOLA
+   # Contrasena: rocknix
+   ```
+2. Diagnostico del hardware de sonido:
+   ```bash
+   aplay -l
+   # Detectada tarjeta 0: rk817ext [rk817_ext]
+   amixer -c 0 contents
+   ```
+3. Conmutacion del multiplexor de reproduccion a Altavoz Interno (`SPK`):
+   ```bash
+   amixer -c 0 cset name='Playback Mux' 'SPK'
+   amixer -c 0 sset 'Master' 100% unmute
+   ```
+4. Prueba de sonido exitosa:
+   ```bash
+   speaker-test -D default -t sine -f 440 -c 2 -l 2
+   ```
+
+### Automatizacion Permanente:
+Para evitar que la configuracion se reinicie al apagar la consola, se crearon los siguientes archivos en el almacenamiento persistente:
+1. `/storage/.config/custom_start.sh`:
+   ```bash
+   #!/bin/bash
+   sleep 1
+   amixer -c 0 cset name="Playback Mux" "SPK" 2>/dev/null || true
+   amixer -c 0 sset "Master" 100% unmute 2>/dev/null || true
+   ```
+2. `/storage/.config/profile.d/002-audio_path`:
+   ```bash
+   DEVICE_PLAYBACK_PATH="SPK"
+   ```
+3. Guardado del estado de ALSA:
+   ```bash
+   alsactl --file /storage/.config/asound.state store
+   alsactl --file /storage/.config/alsa/asound.state store
+   ```
 
 ---
 
@@ -104,7 +140,7 @@ Al arrancar ROCKNIX en consolas clones EE-Clones de 2025, el sistema no emite ni
 3. Conectate desde cualquier computadora:
    ```bash
    ssh root@IP_DE_LA_CONSOLA
-   # Contrasena: root (o rocknix)
+   # Contrasena: rocknix
    ```
 
 ### B. Como agregar mas juegos en el futuro
