@@ -1,0 +1,12 @@
+[Unit]
+Description=Patch ALSA UCM2 for R35 Ultra Clones
+Before=pipewire.service wireplumber.service alsa-state.service sound.target
+DefaultDependencies=no
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'mount --bind /storage/.config/alsa/ucm2 /usr/share/alsa/ucm2 2>/dev/null || true'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=basic.target sysinit.target
