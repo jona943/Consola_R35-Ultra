@@ -9,6 +9,7 @@ Este directorio contiene las bitacoras de pruebas de sistemas operativos, guias 
 | Documento | Descripcion y Contexto |
 | :--- | :--- |
 | **`BITACORA_PRUEBAS_SISTEMAS.md`** | Registro cronologico exhaustivo de todas las imagenes de firmware probadas (ArkOS, AmberELEC, ROCKNIX, EmuELEC), detallando voltajes del PMIC, comportamiento de LEDs y diagnostico de hardware. |
+| **`INVESTIGACION_KERNEL_Y_OPTIMIZACION_PPSSPP_R35_ULTRA.md`** | Investigacion tecnica de bajo nivel sobre cuellos de botella (CPU In-Order, Mali TBDR, LPDDR3), optimizaciones de Kernel (ZRAM, SCHED_FIFO) y calibracion extrema de PPSSPP con referencias bibliograficas. |
 | **`GUIA_MIGRACION_Y_SISTEMAS_R35_ULTRA.md`** | Guia tecnica detallada sobre la estructura de particiones, compatibilidad del kernel Linux 6.x vs 4.4 y metodos de instalacion. |
 | **`DIAGNOSTICO_Y_PLAN_LIMPIEZA.md`** | Plan de auditoria y curacion del almacenamiento, eliminacion de ROMs corruptas y diseno de la coleccion esencial. |
 | **`JUEGOS_PENDIENTES.md`** | Lista de candidatos y juegos deseados para futuras ampliaciones en PlayStation 1 y otras plataformas aprovechando el espacio libre de la MicroSD. |
