@@ -72,3 +72,8 @@ venv/
 !scripts/
 !config_samples/
 !dtb_r36ultra/
+!images/
+!images/**/
+!images/**/README.md
+!copia_r35Ultra/README.md
+
