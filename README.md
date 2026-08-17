@@ -4,20 +4,38 @@ Este repositorio contiene la memoria tecnica maestra, documentacion de ingenieri
 
 ---
 
-## 1. Decision Arquitectonica Final
+## 1. Ficha Tecnica y Hardware Confirmado
 
-* **Sistema Operativo Definitivo:** **EmuELEC 4.7-Nexus Nativo (Kernel 4.4 KMS)** en almacenamiento interno eMMC.
+| Componente | Especificacion Verificada en Hardware |
+| :--- | :--- |
+| **Dispositivo / Modelo** | **R35 Ultra** / Serie EE-Clone (`Rockchip rk3326 evb lpddr3 v12 board`, revision 2025/2026) |
+| **Procesador (SoC)** | **Rockchip RK3326** (Quad-Core ARM Cortex-A35 64-bit @ 1.3 GHz base, overclockeado a **1.512 GHz**) |
+| **Graficos (GPU)** | **ARM Mali-G31 MP2** (Arquitectura Bifrost v7.0.9, DDK g18p0 @ **520 MHz**) |
+| **Memoria RAM** | **1 GB LPDDR3** (Bus de alta velocidad @ 666 MHz) |
+| **Pantalla** | Panel cuadrado **MIPI DSI de 720 x 720 pixeles** (formato 1:1, tasa de refresco 54.54 Hz) |
+| **Audio y PMIC** | **Rockchip RK817** (Codec de audio de alta definicion I2S y gestion energetica) |
+| **Bateria** | Li-Po recargable de **~3000 mAh** (4.2V max / 2832 mAh diseno reportado) con carga USB-C |
+| **Conectividad Wi-Fi** | **Rockchip RK915 integrado** por bus SDIO `mmc2` (interfaz `wlan0` nativa, sin dongles USB) |
+| **Almacenamiento Interno** | **4 GB eMMC** (`mmcblk0` particionado en `/flash` y `/storage` con **EmuELEC 4.7-Nexus**) |
+| **Almacenamiento Externo** | Ranura **MicroSD (TF1)** (`mmcblk1` con soporte para ext4, FAT32 y exFAT) |
+| **Conectividad Bluetooth** | Pila Bluetooth activa en Kernel (BlueZ / HCI / RFCOMM / HIDP) |
+
+---
+
+## 2. Decision Arquitectonica Final
+
+* **Sistema Operativo Definitivo:** **EmuELEC 4.7-Nexus Nativo (Kernel Linux 5.10.160 KMS)** en almacenamiento interno eMMC.
 * **Justificacion:**  
   Tras evaluar y poner a punto tanto sistemas modernos (ROCKNIX en Linux 6.x) como el sistema nativo de fabrica, se determino que la arquitectura de **renderizado directo por hardware (Direct DRM/KMS)** de EmuELEC entrega el 100% de la capacidad de la GPU Mali-G31 al emulador sin la sobrecarga del compositor Wayland, permitiendo correr juegos 3D exigentes como *God of War: Chains of Olympus* a **35-40 FPS fluidos**.
 * **Tarjeta MicroSD:** Utilizada como almacenamiento dedicado para el **Catalogo Reducido Top 7 Esenciales** y herramientas nativas.
 
 ---
 
-## 2. Estructura del Repositorio
+## 3. Estructura del Repositorio
 
 ```
 Consola_R35-Ultra/
-├── README.md                              <- Este documento (Resumen del estado final)
+├── README.md                              <- Este documento (Ficha tecnica y resumen del estado final)
 ├── MEMORIA_TECNICA_PROYECTO_R35_ULTRA.md  <- Memoria tecnica maestra exhaustiva
 │
 ├── docs/                                  <- Documentacion tecnica y bitacoras
@@ -26,7 +44,7 @@ Consola_R35-Ultra/
 │   └── DIAGNOSTICO_Y_PLAN_LIMPIEZA.md
 │
 ├── config_samples/                        <- Ejemplos de configuracion y respaldos
-│   ├── README.md
+│   ├── README.md                          <- Catalogo de perfiles de configuracion turbo
 │   ├── ppsspp.ini.optimized               <- Perfil turbo para God of War y PSP
 │   ├── custom_start.sh.performance_and_audio
 │   └── gamelist.xml.sample
@@ -43,14 +61,14 @@ Consola_R35-Ultra/
 
 ---
 
-## 3. Optimizaciones Principales Aplicadas a la Consola
+## 4. Optimizaciones Principales Aplicadas a la Consola
 
 1. **Desbloqueo Permanente de Acceso Root por SSH:**  
-   Inyeccion de claves criptograficas en eMMC interna mediante arranque cruzado. Acceso directo con `ssh root@emuelec.local`.
+   Inyeccion de claves criptograficas en eMMC interna mediante arranque cruzado. Acceso directo con `ssh root@emuelec.local` o por IP sin requerir clave.
 2. **Overclock de Hardware a 1.512 GHz:**  
-   CPU fijada a 1.512 GHz y GPU Mali-G31 a 520 MHz de forma persistente en cada inicio.
+   CPU fijada con gobernador `performance` (hasta 1.512 GHz) y GPU Mali-G31 a 520 MHz de forma persistente en cada inicio.
 3. **Perfil Turbo PPSSPP para PSP:**  
-   Reloj emulado calibrado a 180 MHz, renderizado sin bufer y estiramiento dinamico de audio (`AudioResampler = True`) para eliminar cortes de sonido.
+   Reloj emulado calibrado a 180 MHz, renderizado sin bufer (`SkipBufferEffects = True`) y estiramiento dinamico de audio (`AudioResampler = True`) para eliminar cortes de sonido.
 4. **Catalogo Reducido Top 7 Esenciales:**  
    63 titulos de elite en PSP, NDS, GBA, SNES, N64, PS1, Neo-Geo, CPS1/2/3 y NES con caratulas oficiales en HD vinculadas al 100%.
 5. **Herramienta Nativa en PORTS:**  
@@ -58,16 +76,16 @@ Consola_R35-Ultra/
 
 ---
 
-## 4. Acceso Rapido por SSH
+## 5. Acceso Rapido por SSH
 
 Para acceder a la consola desde cualquier terminal en la misma red Wi-Fi:
 
 ```bash
 ssh root@emuelec.local
-# o por IP:
-ssh root@192.168.1.66
+# o directamente por IP asignada:
+ssh root@192.168.1.69
 ```
 
 ---
 
-*Repositorio mantenido para la consola R35 Ultra (2026).*
+*Repositorio mantenido para la consola R35 Ultra (2025/2026).*
