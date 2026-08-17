@@ -1,0 +1,165 @@
+=== INICIO DE TELEMETRIA EN VIVO CON OPTIMIZACIONES DE KERNEL (5 MINUTOS) ===
+Inicio: Mon Aug 17 14:24:52 CST 2026
+----------------------------------------------------------------------
+[14:24:52] Muestra 1/20:
+  CPU: 1296000 kHz (performance) | Temp: 73.8 °C
+  GPU: 520000000 Hz (performance) | SD Read-Ahead: 128 KB
+  RAM: 372M usada / 248M libre | ZRAM Swap: 0M (Orig: 0 KB -> Compr: 0 KB (Ratio: 1.00:1))
+  Bateria: 97% (3.713V, -616 mA, Discharging)
+  PPSSPP: PID=3775 | Top:    3775 root       1 -19 2074436 298508 178212 R 211.8  29.9   5:31.58 PPSSPPS+
+  Prioridad Scheduler: 
+----------------------------------------------------------------------
+[14:25:07] Muestra 2/20:
+  CPU: 1296000 kHz (performance) | Temp: 75.8 °C
+  GPU: 520000000 Hz (performance) | SD Read-Ahead: 128 KB
+  RAM: 372M usada / 248M libre | ZRAM Swap: 0M (Orig: 0 KB -> Compr: 0 KB (Ratio: 1.00:1))
+  Bateria: 97% (3.648V, -642 mA, Discharging)
+  PPSSPP: PID=3775 | Top:    3775 root       1 -19 2074436 298508 178212 R 188.2  29.9   6:05.88 PPSSPPS+
+  Prioridad Scheduler: 
+----------------------------------------------------------------------
+[14:25:22] Muestra 3/20:
+  CPU: 1296000 kHz (performance) | Temp: 73.8 °C
+  GPU: 520000000 Hz (performance) | SD Read-Ahead: 128 KB
+  RAM: 380M usada / 240M libre | ZRAM Swap: 0M (Orig: 0 KB -> Compr: 0 KB (Ratio: 1.00:1))
+  Bateria: 97% (3.615V, -627 mA, Discharging)
+  PPSSPP: PID=3775 | Top:    3775 root       1 -19 2079024 302524 174588 R 200.0  30.3   6:38.85 PPSSPPS+
+  Prioridad Scheduler: 
+----------------------------------------------------------------------
+[14:25:38] Muestra 4/20:
+  CPU: 1296000 kHz (performance) | Temp: 75.0 °C
+  GPU: 520000000 Hz (performance) | SD Read-Ahead: 128 KB
+  RAM: 380M usada / 239M libre | ZRAM Swap: 0M (Orig: 0 KB -> Compr: 0 KB (Ratio: 1.00:1))
+  Bateria: 97% (3.651V, -642 mA, Discharging)
+  PPSSPP: PID=3775 | Top:    3775 root       1 -19 2079024 302524 174588 R 211.8  30.3   7:11.39 PPSSPPS+
+  Prioridad Scheduler: 
+----------------------------------------------------------------------
+[14:25:53] Muestra 5/20:
+  CPU: 1296000 kHz (performance) | Temp: 75.8 °C
+  GPU: 520000000 Hz (performance) | SD Read-Ahead: 128 KB
+  RAM: 381M usada / 239M libre | ZRAM Swap: 0M (Orig: 0 KB -> Compr: 0 KB (Ratio: 1.00:1))
+  Bateria: 97% (3.615V, -650 mA, Discharging)
+  PPSSPP: PID=3775 | Top:    3775 root       1 -19 2079152 302656 174720 S 216.7  30.3   7:45.28 PPSSPPS+
+  Prioridad Scheduler: 
+----------------------------------------------------------------------
+[14:26:09] Muestra 6/20:
+  CPU: 1296000 kHz (performance) | Temp: 74.2 °C
+  GPU: 520000000 Hz (performance) | SD Read-Ahead: 128 KB
+  RAM: 391M usada / 228M libre | ZRAM Swap: 0M (Orig: 0 KB -> Compr: 0 KB (Ratio: 1.00:1))
+  Bateria: 96% (3.660V, -621 mA, Discharging)
+  PPSSPP: PID=3775 | Top:    3775 root       1 -19 2086308 310260 171604 R 183.3  31.0   8:17.19 PPSSPPS+
+  Prioridad Scheduler: 
+----------------------------------------------------------------------
+[14:26:24] Muestra 7/20:
+  CPU: 1296000 kHz (performance) | Temp: 75.0 °C
+  GPU: 520000000 Hz (performance) | SD Read-Ahead: 128 KB
+  RAM: 396M usada / 223M libre | ZRAM Swap: 0M (Orig: 0 KB -> Compr: 0 KB (Ratio: 1.00:1))
+  Bateria: 96% (3.637V, -643 mA, Discharging)
+  PPSSPP: PID=3775 | Top:    3775 root       1 -19 2154912 313860 170196 R 200.0  31.4   8:49.66 PPSSPPS+
+  Prioridad Scheduler: 
+----------------------------------------------------------------------
+[14:26:39] Muestra 8/20:
+  CPU: 1296000 kHz (performance) | Temp: 74.6 °C
+  GPU: 520000000 Hz (performance) | SD Read-Ahead: 128 KB
+  RAM: 396M usada / 223M libre | ZRAM Swap: 0M (Orig: 0 KB -> Compr: 0 KB (Ratio: 1.00:1))
+  Bateria: 96% (3.624V, -642 mA, Discharging)
+  PPSSPP: PID=3775 | Top:    3775 root       1 -19 2154912 313860 170196 R 223.5  31.4   9:22.87 PPSSPPS+
+  Prioridad Scheduler: 
+----------------------------------------------------------------------
+[14:26:55] Muestra 9/20:
+  CPU: 1296000 kHz (performance) | Temp: 76.5 °C
+  GPU: 520000000 Hz (performance) | SD Read-Ahead: 128 KB
+  RAM: 397M usada / 220M libre | ZRAM Swap: 0M (Orig: 0 KB -> Compr: 0 KB (Ratio: 1.00:1))
+  Bateria: 96% (3.640V, -645 mA, Discharging)
+  PPSSPP: PID=3775 | Top:    3775 root       1 -19 2154912 314112 170204 R 229.4  31.4   9:56.88 PPSSPPS+
+  Prioridad Scheduler: 
+----------------------------------------------------------------------
+[14:27:10] Muestra 10/20:
+  CPU: 1296000 kHz (performance) | Temp: 73.8 °C
+  GPU: 520000000 Hz (performance) | SD Read-Ahead: 128 KB
+  RAM: 397M usada / 220M libre | ZRAM Swap: 0M (Orig: 0 KB -> Compr: 0 KB (Ratio: 1.00:1))
+  Bateria: 96% (3.608V, -652 mA, Discharging)
+  PPSSPP: PID=3775 | Top:    3775 root       1 -19 2154912 314264 170204 R 194.1  31.4  10:30.48 PPSSPPS+
+  Prioridad Scheduler: 
+----------------------------------------------------------------------
+[14:27:26] Muestra 11/20:
+  CPU: 1296000 kHz (performance) | Temp: 75.4 °C
+  GPU: 520000000 Hz (performance) | SD Read-Ahead: 128 KB
+  RAM: 396M usada / 220M libre | ZRAM Swap: 0M (Orig: 0 KB -> Compr: 0 KB (Ratio: 1.00:1))
+  Bateria: 96% (3.638V, -640 mA, Discharging)
+  PPSSPP: PID=3775 | Top:    3775 root       1 -19 2154912 314264 170204 R 229.4  31.4  11:03.57 PPSSPPS+
+  Prioridad Scheduler: 
+----------------------------------------------------------------------
+[14:27:41] Muestra 12/20:
+  CPU: 1296000 kHz (performance) | Temp: 75.0 °C
+  GPU: 520000000 Hz (performance) | SD Read-Ahead: 128 KB
+  RAM: 396M usada / 215M libre | ZRAM Swap: 0M (Orig: 0 KB -> Compr: 0 KB (Ratio: 1.00:1))
+  Bateria: 95% (3.620V, -649 mA, Discharging)
+  PPSSPP: PID=3775 | Top:    3775 root       1 -19 2154912 314528 170204 S 225.0  31.5  11:37.03 PPSSPPS+
+  Prioridad Scheduler: 
+----------------------------------------------------------------------
+[14:27:56] Muestra 13/20:
+  CPU: 1296000 kHz (performance) | Temp: 76.5 °C
+  GPU: 520000000 Hz (performance) | SD Read-Ahead: 128 KB
+  RAM: 400M usada / 211M libre | ZRAM Swap: 0M (Orig: 0 KB -> Compr: 0 KB (Ratio: 1.00:1))
+  Bateria: 95% (3.646V, -648 mA, Discharging)
+  PPSSPP: PID=3775 | Top:    3775 root       1 -19 2158168 318444 171080 R 117.6  31.8  12:09.50 PPSSPPS+
+  Prioridad Scheduler: 
+----------------------------------------------------------------------
+[14:28:12] Muestra 14/20:
+  CPU: 1296000 kHz (performance) | Temp: 76.2 °C
+  GPU: 520000000 Hz (performance) | SD Read-Ahead: 128 KB
+  RAM: 420M usada / 191M libre | ZRAM Swap: 0M (Orig: 0 KB -> Compr: 0 KB (Ratio: 1.00:1))
+  Bateria: 95% (3.644V, -639 mA, Discharging)
+  PPSSPP: PID=3775 | Top:    3775 root       1 -19 2199828 353976 185220 S 211.8  35.4  12:41.79 PPSSPPS+
+  Prioridad Scheduler: 
+----------------------------------------------------------------------
+[14:28:27] Muestra 15/20:
+  CPU: 1296000 kHz (performance) | Temp: 75.8 °C
+  GPU: 520000000 Hz (performance) | SD Read-Ahead: 128 KB
+  RAM: 420M usada / 190M libre | ZRAM Swap: 0M (Orig: 0 KB -> Compr: 0 KB (Ratio: 1.00:1))
+  Bateria: 95% (3.657V, -639 mA, Discharging)
+  PPSSPP: PID=3775 | Top:    3775 root       1 -19 2200084 354236 185480 R 229.4  35.4  13:14.92 PPSSPPS+
+  Prioridad Scheduler: 
+----------------------------------------------------------------------
+[14:28:43] Muestra 16/20:
+  CPU: 1296000 kHz (performance) | Temp: 75.8 °C
+  GPU: 520000000 Hz (performance) | SD Read-Ahead: 128 KB
+  RAM: 421M usada / 190M libre | ZRAM Swap: 0M (Orig: 0 KB -> Compr: 0 KB (Ratio: 1.00:1))
+  Bateria: 95% (3.633V, -637 mA, Discharging)
+  PPSSPP: PID=3775 | Top:    3775 root       1 -19 2200084 354236 185480 S 217.6  35.4  13:48.28 PPSSPPS+
+  Prioridad Scheduler: 
+----------------------------------------------------------------------
+[14:28:58] Muestra 17/20:
+  CPU: 1296000 kHz (performance) | Temp: 77.3 °C
+  GPU: 520000000 Hz (performance) | SD Read-Ahead: 128 KB
+  RAM: 421M usada / 189M libre | ZRAM Swap: 0M (Orig: 0 KB -> Compr: 0 KB (Ratio: 1.00:1))
+  Bateria: 94% (3.643V, -622 mA, Discharging)
+  PPSSPP: PID=3775 | Top:    3775 root       1 -19 2200084 354236 185480 R 217.6  35.4  14:20.77 PPSSPPS+
+  Prioridad Scheduler: 
+----------------------------------------------------------------------
+[14:29:13] Muestra 18/20:
+  CPU: 1296000 kHz (performance) | Temp: 76.9 °C
+  GPU: 520000000 Hz (performance) | SD Read-Ahead: 128 KB
+  RAM: 421M usada / 189M libre | ZRAM Swap: 0M (Orig: 0 KB -> Compr: 0 KB (Ratio: 1.00:1))
+  Bateria: 94% (3.653V, -636 mA, Discharging)
+  PPSSPP: PID=3775 | Top:    3775 root       1 -19 2200084 354236 185480 R 200.0  35.4  14:53.91 PPSSPPS+
+  Prioridad Scheduler: 
+----------------------------------------------------------------------
+[14:29:29] Muestra 19/20:
+  CPU: 1296000 kHz (performance) | Temp: 76.2 °C
+  GPU: 520000000 Hz (performance) | SD Read-Ahead: 128 KB
+  RAM: 421M usada / 189M libre | ZRAM Swap: 0M (Orig: 0 KB -> Compr: 0 KB (Ratio: 1.00:1))
+  Bateria: 94% (3.657V, -636 mA, Discharging)
+  PPSSPP: PID=3775 | Top:    3775 root       1 -19 2200084 354236 185480 R 217.6  35.4  15:27.34 PPSSPPS+
+  Prioridad Scheduler: 
+----------------------------------------------------------------------
+[14:29:44] Muestra 20/20:
+  CPU: 1296000 kHz (performance) | Temp: 76.5 °C
+  GPU: 520000000 Hz (performance) | SD Read-Ahead: 128 KB
+  RAM: 421M usada / 189M libre | ZRAM Swap: 0M (Orig: 0 KB -> Compr: 0 KB (Ratio: 1.00:1))
+  Bateria: 94% (3.694V, -616 mA, Discharging)
+  PPSSPP: PID=3775 | Top:    3775 root       1 -19 2200084 354244 185480 R 205.6  35.4  16:00.40 PPSSPPS+
+  Prioridad Scheduler: 
+----------------------------------------------------------------------
+=== FIN DE TELEMETRIA CON OPTIMIZACIONES DE KERNEL ===
+Fin: Mon Aug 17 14:30:00 CST 2026
