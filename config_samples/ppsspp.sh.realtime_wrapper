@@ -1,0 +1,31 @@
+#!/bin/bash
+# ==============================================================================
+# WRAPPER TURBO REAL-TIME SCHED_FIFO PPSSPP PARA R35 ULTRA
+# ==============================================================================
+
+# 1. Boost Maximo de CPU (1.512 GHz), GPU Mali (520 MHz) y bus RAM al entrar al juego
+echo 1512000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 2>/dev/null || true
+echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor 2>/dev/null || true
+echo performance > /sys/class/devfreq/ff400000.gpu/governor 2>/dev/null || true
+echo performance > /sys/class/devfreq/dmc/governor 2>/dev/null || true
+
+# 2. Configuracion de gamepad original
+AUTOGP=$(get_ee_setting ppsspp_auto_gamepad)
+if [[ "${AUTOGP}" == "1" ]]; then
+	set_ppsspp_joy.sh
+fi
+
+ARG=${1//[\\]/}
+export SDL_AUDIODRIVER=alsa
+
+# 3. Lanzar PPSSPPSDL con maxima prioridad de tiempo real (SCHED_FIFO 99) y nice -20
+nice -n -20 chrt -f 99 /usr/bin/PPSSPPSDL --fullscreen "${ARG}"
+RET_CODE=$?
+
+# 4. Al salir del juego, restaurar inmediatamente modo dinamico inteligente de bajo consumo
+echo 408000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 2>/dev/null || true
+echo interactive > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor 2>/dev/null || echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor 2>/dev/null || true
+echo simple_ondemand > /sys/class/devfreq/ff400000.gpu/governor 2>/dev/null || true
+echo dmc_ondemand > /sys/class/devfreq/dmc/governor 2>/dev/null || true
+
+exit $RET_CODE

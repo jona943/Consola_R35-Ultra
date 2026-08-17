@@ -14,7 +14,7 @@ SkipGPUReadbackMode = 1
 FastMemory = True
 VertexCache = True
 HardwareTransform = True
-SoftwareSkinning = True
+SoftwareSkinning = False
 TextureBackoffCache = True
 TextureFiltering = 1
 BufferFiltering = 1
@@ -22,6 +22,15 @@ SplineQuality = 0
 SoftwareRenderer = False
 DisableAlphaTest = True
 PrescaleUV = True
+
+[Sound]
+Enable = True
+AudioBackend = 0
+AudioLatency = 2
+ExtraAudioBuffering = True
+SoundSpeedHack = True
+AudioResampler = True
+GlobalVolume = 10
 
 [SystemParam]
 PSPModel = 0

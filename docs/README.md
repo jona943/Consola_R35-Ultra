@@ -10,6 +10,7 @@ Este directorio contiene las bitacoras de pruebas de sistemas operativos, guias 
 | :--- | :--- |
 | **`BITACORA_PRUEBAS_SISTEMAS.md`** | Registro cronologico exhaustivo de todas las imagenes de firmware probadas (ArkOS, AmberELEC, ROCKNIX, EmuELEC), detallando voltajes del PMIC, comportamiento de LEDs y diagnostico de hardware. |
 | **`INVESTIGACION_KERNEL_Y_OPTIMIZACION_PPSSPP_R35_ULTRA.md`** | Investigacion tecnica de bajo nivel sobre cuellos de botella (CPU In-Order, Mali TBDR, LPDDR3), optimizaciones de Kernel (ZRAM, SCHED_FIFO) y calibracion extrema de PPSSPP con referencias bibliograficas. |
+| **`GUIA_OPTIMIZACION_AUDIO_PSP_Y_DREAMCAST.md`** | Calibracion acustica integral, remuestreo elastico dinamico (AudioResampler) y optimizacion de controladores ALSA/RetroArch para PSP y Dreamcast. |
 | **`AUDITORIA_PROCESOS_Y_SERVICIOS_SEGUNDO_PLANO.md`** | Auditoria integral de demonios Systemd, sockets de red y procesos de fondo con evaluacion de consumo de recursos y modo ultra-ahorro. |
 | **`GUIA_MIGRACION_Y_SISTEMAS_R35_ULTRA.md`** | Guia tecnica detallada sobre la estructura de particiones, compatibilidad del kernel Linux 6.x vs 4.4 y metodos de instalacion. |
 | **`DIAGNOSTICO_Y_PLAN_LIMPIEZA.md`** | Plan de auditoria y curacion del almacenamiento, eliminacion de ROMs corruptas y diseno de la coleccion esencial. |

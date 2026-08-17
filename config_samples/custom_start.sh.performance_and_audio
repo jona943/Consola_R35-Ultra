@@ -37,7 +37,14 @@ if [ -e /sys/block/zram0 ]; then
 fi
 
 # ==============================================================================
-# 3. INTEGRACION DE NUCLEOS RETROARCH Y ACCESO SSH
+# 3. OVERRIDE DE WRAPPERS TURBO REAL-TIME (PPSSPP)
+# ==============================================================================
+if [ -f /storage/bin/ppsspp.sh ]; then
+    mount --bind /storage/bin/ppsspp.sh /usr/bin/ppsspp.sh 2>/dev/null || true
+fi
+
+# ==============================================================================
+# 4. INTEGRACION DE NUCLEOS RETROARCH Y ACCESO SSH
 # ==============================================================================
 
 # Vincular todos los nucleos de emuladores para RetroArch con alias
