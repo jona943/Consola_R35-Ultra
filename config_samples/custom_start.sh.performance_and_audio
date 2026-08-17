@@ -1,0 +1,49 @@
+#!/bin/bash
+. /etc/profile
+
+# ==============================================================================
+# OPTIMIZACION DE ENERGIA Y RENDIMIENTO DINAMICO R35 ULTRA (2025/2026)
+# ==============================================================================
+
+# 1. CPU: Frecuencia dinamica de 408 MHz a 1.512 GHz con gobernador interactivo
+echo 408000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 2>/dev/null || true
+echo 1512000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 2>/dev/null || true
+echo interactive > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor 2>/dev/null || echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor 2>/dev/null || true
+
+# 2. GPU Mali-G31: Escalamiento por demanda de renderizado 3D (200 MHz a 520 MHz)
+echo simple_ondemand > /sys/class/devfreq/ff400000.gpu/governor 2>/dev/null || echo dmc_ondemand > /sys/class/devfreq/ff400000.gpu/governor 2>/dev/null || true
+
+# 3. Controlador de Memoria DMC: Gobernador por demanda
+echo dmc_ondemand > /sys/class/devfreq/dmc/governor 2>/dev/null || true
+
+# 4. Wi-Fi RK915: Habilitar ahorro de energia pasivo
+iw dev wlan0 set power_save on 2>/dev/null || iwconfig wlan0 power on 2>/dev/null || true
+
+# ==============================================================================
+# INTEGRACION DE NUCLEOS RETROARCH Y ACCESO SSH
+# ==============================================================================
+
+# 5. Vincular todos los nucleos de emuladores para RetroArch con alias
+python3 -c "
+import os, glob
+for d in ['/storage/cores', '/tmp/cores']:
+    os.makedirs(d, exist_ok=True)
+    for f in glob.glob('/usr/lib/libretro/*'):
+        base = os.path.basename(f)
+        dst = os.path.join(d, base)
+        if not os.path.exists(dst): os.symlink(f, dst)
+        if base.endswith('_libretro.so'):
+            alias = base[:-12] + '.so'
+            alias_dst = os.path.join(d, alias)
+            if not os.path.exists(alias_dst): os.symlink(f, alias_dst)
+" 2>/dev/null || true
+
+# 6. Desbloqueo de SSH y contrasena permanente
+echo "root:emuelec" | chpasswd 2>/dev/null || true
+echo "emuelec:emuelec" | chpasswd 2>/dev/null || true
+sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config 2>/dev/null || true
+sed -i "s/#PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config 2>/dev/null || true
+sed -i "s/PermitRootLogin prohibit-password/PermitRootLogin yes/g" /etc/ssh/sshd_config 2>/dev/null || true
+sed -i "s/#PermitRootLogin yes/PermitRootLogin yes/g" /etc/ssh/sshd_config 2>/dev/null || true
+
+exit 0
