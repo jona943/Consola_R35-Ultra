@@ -1,0 +1,33 @@
+# Configuracion Optimizada de PPSSPP Standalone para RK3326 (Mali-G31 MP2)
+# Calibracion especial para titulos pesados (God of War, Tekken 6, GTA) a 30-60 FPS
+
+[Graphics]
+GraphicsBackend = 0 (OPENGL)
+RenderingMode = 0
+InternalResolution = 1
+FrameSkip = 1
+FrameSkipType = 0
+AutoFrameSkip = True
+FrameSkipUnthrottle = True
+SkipBufferEffects = True
+SkipGPUReadbackMode = 1
+FastMemory = True
+VertexCache = True
+HardwareTransform = True
+SoftwareSkinning = True
+TextureBackoffCache = True
+TextureFiltering = 1
+BufferFiltering = 1
+SplineQuality = 0
+SoftwareRenderer = False
+DisableAlphaTest = True
+PrescaleUV = True
+
+[SystemParam]
+PSPModel = 0
+ForceMaxCPU = True
+LockedCPUSpeed = 222
+
+[SpeedHacks]
+PrescaleUV = True
+DisableAlphaTest = True

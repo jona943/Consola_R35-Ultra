@@ -1,78 +1,73 @@
 # Repositorio R35 Ultra (2025/2026)
 
-Este repositorio contiene la memoria tecnica, colecciones curadas de juegos, imagenes de sistemas operativos, configuraciones de referencia y scripts de automatizacion para la consola portatil R35 Ultra (Rockchip RK3326 / EE-Clone).
+Este repositorio contiene la memoria tecnica maestra, documentacion de ingenieria inversa, guias de configuracion, scripts de automatizacion y catalogo de juegos optimizado para la consola portatil **R35 Ultra** (Rockchip RK3326 revision v12).
 
 ---
 
-## Estructura del Repositorio
+## 1. Decision Arquitectonica Final
+
+* **Sistema Operativo Definitivo:** **EmuELEC 4.7-Nexus Nativo (Kernel 4.4 KMS)** en almacenamiento interno eMMC.
+* **Justificacion:**  
+  Tras evaluar y poner a punto tanto sistemas modernos (ROCKNIX en Linux 6.x) como el sistema nativo de fabrica, se determino que la arquitectura de **renderizado directo por hardware (Direct DRM/KMS)** de EmuELEC entrega el 100% de la capacidad de la GPU Mali-G31 al emulador sin la sobrecarga del compositor Wayland, permitiendo correr juegos 3D exigentes como *God of War: Chains of Olympus* a **35-40 FPS fluidos**.
+* **Tarjeta MicroSD:** Utilizada como almacenamiento dedicado para el **Catalogo Reducido Top 7 Esenciales** y herramientas nativas.
+
+---
+
+## 2. Estructura del Repositorio
 
 ```
 Consola_R35-Ultra/
-├── README.md                              <- Este documento (Guia de acceso rapido)
-├── MEMORIA_TECNICA_PROYECTO_R35_ULTRA.md  <- Memoria tecnica maestra integral
+├── README.md                              <- Este documento (Resumen del estado final)
+├── MEMORIA_TECNICA_PROYECTO_R35_ULTRA.md  <- Memoria tecnica maestra exhaustiva
 │
 ├── docs/                                  <- Documentacion tecnica y bitacoras
-│   ├── BITACORA_PRUEBAS_SISTEMAS.md       <- Registro detallado de pruebas de OS
+│   ├── BITACORA_PRUEBAS_SISTEMAS.md       <- Registro de pruebas de arranque y OS
 │   ├── GUIA_MIGRACION_Y_SISTEMAS_R35_ULTRA.md
 │   └── DIAGNOSTICO_Y_PLAN_LIMPIEZA.md
 │
-├── config_samples/                        <- Ejemplos de configuracion y plantillas
+├── config_samples/                        <- Ejemplos de configuracion y respaldos
 │   ├── README.md
-│   ├── extlinux.conf.rocknix_clean
-│   ├── extlinux.conf.original_with_debug
-│   ├── 001-device_config.audio_fix
-│   ├── custom_start.sh.audio_fix
-│   ├── es_settings.cfg.audio_fix
-│   ├── boot.ini.arkos4clone
-│   ├── system-dirs.conf.rocknix
+│   ├── ppsspp.ini.optimized               <- Perfil turbo para God of War y PSP
+│   ├── custom_start.sh.performance_and_audio
 │   └── gamelist.xml.sample
 │
-├── scripts/                               <- Scripts de automatizacion
-│   ├── corregir_rutas_y_arranque.sh       <- Asigna ROMs a games-internal y limpia inicio
-│   ├── activar_audio_r35ultra.sh          <- Calibra amplificador y activa altavoz RK817
-│   ├── flashear_rocknix_b.sh              <- Flasheador oficial ROCKNIX (Imagen B)
-│   ├── finalizar_copia.sh                 <- Sincroniza BIOS, temas y musica
-│   ├── reparar_y_copiar.sh                <- Reparacion ext4 y transferencia con rsync
-│   ├── formatear_y_copiar.sh              <- Formateador FAT32 para OS de fabrica
+├── scripts/                               <- Scripts de automatizacion y mantenimiento
+│   ├── copiar_top7_final.py               <- Transferencia de juegos Top 7 y caratulas
+│   ├── activar_audio_r35ultra.sh          <- Calibracion de audio ALSA / RK817
+│   ├── flashear_rocknix_b.sh              <- Respaldo de imagen ROCKNIX B
 │   └── legacy/                            <- Scripts de pruebas anteriores
 │
-├── images/                                <- Imagenes de sistemas operativos
-│   ├── ROCKNIX/                           <- ROCKNIX-RK3326-b.img (Ganador 100%)
-│   ├── AmberELEC/                         <- AmberELEC-RG351MP.img
-│   └── ArkOS/                             <- ArkOS MultiPanel
-│
-├── copia_r35Ultra/                        <- Coleccion curada de 18 GB (1.669 juegos + portadas HD)
-└── dtb_r36ultra/                          <- Arboles de dispositivos de respaldo
+├── copia_r35Ultra/                        <- Repositorio de ROMs de respaldo y caratulas HD
+└── dtb_r36ultra/                          <- Arboles de dispositivos
 ```
 
 ---
 
-## Comandos Rapidos
+## 3. Optimizaciones Principales Aplicadas a la Consola
 
-### 1. Activar juegos y limpiar arranque:
-```bash
-./corregir_rutas_y_arranque.sh
-```
+1. **Desbloqueo Permanente de Acceso Root por SSH:**  
+   Inyeccion de claves criptograficas en eMMC interna mediante arranque cruzado. Acceso directo con `ssh root@emuelec.local`.
+2. **Overclock de Hardware a 1.512 GHz:**  
+   CPU fijada a 1.512 GHz y GPU Mali-G31 a 520 MHz de forma persistente en cada inicio.
+3. **Perfil Turbo PPSSPP para PSP:**  
+   Reloj emulado calibrado a 180 MHz, renderizado sin bufer y estiramiento dinamico de audio (`AudioResampler = True`) para eliminar cortes de sonido.
+4. **Catalogo Reducido Top 7 Esenciales:**  
+   63 titulos de elite en PSP, NDS, GBA, SNES, N64, PS1, Neo-Geo, CPS1/2/3 y NES con caratulas oficiales en HD vinculadas al 100%.
+5. **Herramienta Nativa en PORTS:**  
+   `Diagnostico y Estado del Sistema` integrado directamente en el carrusel de consolas con telemetria en vivo por hardware (`text_viewer`).
 
-### 2. Calibrar y desmutear audio (Codec RK817):
-```bash
-./activar_audio_r35ultra.sh
-```
+---
 
-### 3. Flashear ROCKNIX desde cero a una nueva MicroSD:
-```bash
-./flashear_rocknix_b.sh
-```
+## 4. Acceso Rapido por SSH
 
-### 4. Copiar BIOS, Temas y Musica:
+Para acceder a la consola desde cualquier terminal en la misma red Wi-Fi:
+
 ```bash
-./finalizar_copia.sh
+ssh root@emuelec.local
+# o por IP:
+ssh root@192.168.1.66
 ```
 
 ---
 
-## Resumen Tecnico del Hardware:
-* Sistema Oficial Compatible: ROCKNIX (Imagen B - Linux 6.x Mainline).
-* Audio: Codec Rockchip RK817 configurado en modo directo SPK (Legacy) y custom_start.sh.
-* Video: Bus secundario MIPI DSI con control de brillo PWM habilitado.
-* Motivo de compatibilidad: Los sistemas con Kernel 4.4 (ArkOS / AmberELEC) disparan el corte de energia por proteccion (LED Rojo). El Kernel 6.x moderno de ROCKNIX energiza la placa al 100% (LED Azul).
+*Repositorio mantenido para la consola R35 Ultra (2026).*
