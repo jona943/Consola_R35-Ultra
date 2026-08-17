@@ -1,0 +1,3 @@
+sudo chmod 777 /media/dev-jonathan/16GB && \
+sudo chmod -R 777 /media/dev-jonathan/16GB/* && \
+sync

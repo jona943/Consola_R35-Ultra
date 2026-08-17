@@ -1,0 +1,6 @@
+sudo mkdir -p /media/dev-jonathan/16GB/ports_scripts /media/dev-jonathan/16GB/ports /media/dev-jonathan/16GB/tools && \
+sudo cp /home/dev-jonathan/.gemini/antigravity-cli/brain/ef417b5d-3ac4-4794-9494-97ecb4faecee/scratch/root.sh /media/dev-jonathan/16GB/ports_scripts/root.sh && \
+sudo cp /home/dev-jonathan/.gemini/antigravity-cli/brain/ef417b5d-3ac4-4794-9494-97ecb4faecee/scratch/root.sh /media/dev-jonathan/16GB/ports/root.sh && \
+sudo cp /home/dev-jonathan/.gemini/antigravity-cli/brain/ef417b5d-3ac4-4794-9494-97ecb4faecee/scratch/root.sh /media/dev-jonathan/16GB/tools/root.sh && \
+sudo chmod -R 777 /media/dev-jonathan/16GB/ports_scripts /media/dev-jonathan/16GB/ports /media/dev-jonathan/16GB/tools && \
+sync

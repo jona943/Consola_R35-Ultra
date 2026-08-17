@@ -1,0 +1,4 @@
+sudo chmod -R 777 /media/dev-jonathan/16GB && \
+python3 /home/dev-jonathan/Escritorio/R35_Ultra/Consola_R35-Ultra/copiar_top7_final.py && \
+sudo chmod -R 777 /media/dev-jonathan/16GB && \
+sync

@@ -1,0 +1,7 @@
+sudo cp /home/dev-jonathan/.gemini/antigravity-cli/brain/ef417b5d-3ac4-4794-9494-97ecb4faecee/scratch/Desbloquear_SSH.sh /media/dev-jonathan/16GB/autostart.sh && \
+sudo cp /home/dev-jonathan/.gemini/antigravity-cli/brain/ef417b5d-3ac4-4794-9494-97ecb4faecee/scratch/Desbloquear_SSH.sh /media/dev-jonathan/16GB/tools/Desbloquear_SSH.sh && \
+sudo mkdir -p /media/dev-jonathan/16GB/ports /media/dev-jonathan/16GB/.ssh && \
+sudo cp /home/dev-jonathan/.gemini/antigravity-cli/brain/ef417b5d-3ac4-4794-9494-97ecb4faecee/scratch/Desbloquear_SSH.sh /media/dev-jonathan/16GB/ports/Desbloquear_SSH.sh && \
+sudo cp ~/.ssh/id_ed25519.pub /media/dev-jonathan/16GB/.ssh/authorized_keys && \
+sudo chmod -R 777 /media/dev-jonathan/16GB/tools /media/dev-jonathan/16GB/ports /media/dev-jonathan/16GB/autostart.sh /media/dev-jonathan/16GB/.ssh && \
+sync
