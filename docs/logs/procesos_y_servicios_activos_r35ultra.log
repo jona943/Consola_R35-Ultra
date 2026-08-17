@@ -1,0 +1,201 @@
+==============================================================================
+AUDITORIA DE PROCESOS Y SERVICIOS EN TIEMPO REAL - R35 ULTRA
+Fecha y Hora del Sistema: Mon Aug 17 12:02:55 CST 2026
+Kernel: Linux EMUELEC 5.10.160 #1 SMP Fri Aug 8 16:16:11 CST 2025 aarch64 GNU/Linux
+Uptime:  12:02:55 up  2:04,  load average: 0.10, 0.15, 0.36
+==============================================================================
+
+=== 1. ESTADO GENERAL DE MEMORIA RAM Y ZRAM (free -m) ===
+               total        used        free      shared  buff/cache   available
+Mem:             976         231         212          10         532         670
+Swap:            511           0         511
+
+=== 2. SERVICIOS SYSTEMD ACTIVOS Y EN EJECUCION ===
+  UNIT                         LOAD   ACTIVE SUB     DESCRIPTION
+  avahi-daemon.service         loaded active running Avahi Daemon
+  connman.service              loaded active running Connection service
+  dbus.service                 loaded active running D-Bus System Message Bus
+  emustation.service           loaded active running EmulationStation emulator frontend
+  odroidgoa-headphones.service loaded active running Odroid Go Advance Headphone Sense
+  sshd.service                 loaded active running OpenSSH server daemon
+  systemd-journald.service     loaded active running Journal Service
+  systemd-logind.service       loaded active running User Login Management
+  systemd-udevd.service        loaded active running Rule-based Manager for Device Events and Files
+  udt-hotkeys.service          loaded active running Odroid Go Advance Hotkeys
+  udt_battery.service          loaded active running Battery monitoring
+  udt_pwr.service              loaded active running Battery monitoring
+  wpa_supplicant.service       loaded active running WPA supplicant
+
+LOAD   = Reflects whether the unit definition was properly loaded.
+ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
+SUB    = The low-level unit activation state, values depend on unit type.
+13 loaded units listed.
+
+=== 3. PUERTOS Y SOCKETS DE RED A LA ESCUCHA (netstat) ===
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.1:1234          0.0.0.0:*               LISTEN      1094/emulationstati
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      499/sshd -D [listen
+tcp        0      0 :::22                   :::*                    LISTEN      499/sshd -D [listen
+udp        0      0 0.0.0.0:42601           0.0.0.0:*                           408/connmand
+udp        0      0 0.0.0.0:5353            0.0.0.0:*                           452/avahi-daemon: r
+udp        0      0 :::5353                 :::*                                452/avahi-daemon: r
+
+=== 4. INSTANTANEA DE CONSUMO DE RECURSOS (top -b -n 1) ===
+top - 12:02:55 up  2:04,  1 user,  load average: 0.11, 0.15, 0.37
+Tasks: 116 total,   1 running, 115 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  2.9 us,  1.4 sy,  0.0 ni, 95.7 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem :    976.6 total,    212.6 free,    231.7 used,    532.3 buff/cache
+MiB Swap:    512.0 total,    512.0 free,      0.0 used.    670.8 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+  79711 root      20   0    3064   1620   1456 R  12.5   0.2   0:00.02 top
+   1094 root      20   0 1146004 147888  63748 S   6.2  14.8  11:54.53 emulati+
+      1 root      20   0  158492   7832   5512 S   0.0   0.8   0:05.17 systemd
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.03 kthreadd
+      3 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 rcu_gp
+      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 rcu_par+
+      8 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 mm_perc+
+      9 root      20   0       0      0      0 S   0.0   0.0   0:00.65 ksoftir+
+     10 root      20   0       0      0      0 I   0.0   0.0   0:11.38 rcu_sch+
+     11 root      rt   0       0      0      0 S   0.0   0.0   0:00.00 migrati+
+     12 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/0
+     13 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/1
+     14 root      rt   0       0      0      0 S   0.0   0.0   0:00.00 migrati+
+     15 root      20   0       0      0      0 S   0.0   0.0   0:00.25 ksoftir+
+     18 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/2
+     19 root      rt   0       0      0      0 S   0.0   0.0   0:00.00 migrati+
+     20 root      20   0       0      0      0 S   0.0   0.0   0:00.22 ksoftir+
+     23 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/3
+     24 root      rt   0       0      0      0 S   0.0   0.0   0:00.00 migrati+
+     25 root      20   0       0      0      0 S   0.0   0.0   0:00.33 ksoftir+
+     28 root      20   0       0      0      0 S   0.0   0.0   0:00.01 kdevtmp+
+     29 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 netns
+     30 root      20   0       0      0      0 I   0.0   0.0   0:01.02 kworker+
+     32 root      20   0       0      0      0 I   0.0   0.0   0:01.03 kworker+
+     34 root      20   0       0      0      0 S   0.0   0.0   0:00.00 oom_rea+
+     35 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 writeba+
+     76 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kblockd
+     77 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 tpm_dev+
+
+=== 5. ARBOL COMPLETO DE PROCESOS EN EJECUCION (ps -ef) ===
+PID   USER     TIME  COMMAND
+    1 root      0:05 /usr/lib/systemd/systemd
+    2 root      0:00 [kthreadd]
+    3 root      0:00 [rcu_gp]
+    4 root      0:00 [rcu_par_gp]
+    8 root      0:00 [mm_percpu_wq]
+    9 root      0:00 [ksoftirqd/0]
+   10 root      0:11 [rcu_sched]
+   11 root      0:00 [migration/0]
+   12 root      0:00 [cpuhp/0]
+   13 root      0:00 [cpuhp/1]
+   14 root      0:00 [migration/1]
+   15 root      0:00 [ksoftirqd/1]
+   18 root      0:00 [cpuhp/2]
+   19 root      0:00 [migration/2]
+   20 root      0:00 [ksoftirqd/2]
+   23 root      0:00 [cpuhp/3]
+   24 root      0:00 [migration/3]
+   25 root      0:00 [ksoftirqd/3]
+   28 root      0:00 [kdevtmpfs]
+   29 root      0:00 [netns]
+   30 root      0:01 [kworker/2:1-mm_]
+   32 root      0:01 [kworker/1:1-eve]
+   34 root      0:00 [oom_reaper]
+   35 root      0:00 [writeback]
+   76 root      0:00 [kblockd]
+   77 root      0:00 [tpm_dev_wq]
+   78 root      0:00 [edac-poller]
+   79 root      0:00 [devfreq_wq]
+   80 root      0:00 [watchdogd]
+   81 root      0:02 [cfinteractive]
+   84 root      0:00 [cfg80211]
+   85 root      0:00 [irq/25-rockchip]
+   86 root      0:00 [kswapd0]
+   88 root      0:00 [irq/52-rockchip]
+   89 root      0:00 [irq/53-rockchip]
+   91 root      0:00 [queue_work0]
+   92 root      0:00 [irq/38-ff440000]
+   93 root      0:00 [irq/35-ff442400]
+   94 root      0:00 [irq/37-ff442000]
+   95 root      0:00 [hwrng]
+   96 root      0:00 [dmabuf-deferred]
+   98 root      0:00 [uas]
+   99 root      0:00 [irq/55-rk817]
+  100 root      0:00 [rk817-bat-monit]
+  101 root      0:00 [rk817-dc-wq]
+  102 root      0:00 [rk817-usb-wq]
+  104 root      0:00 [cryptodev_queue]
+  105 root      0:00 [irq/82-ff370000]
+  106 root      0:00 [irq/81-headset_]
+  107 root      0:01 [kworker/0:2-eve]
+  108 root      0:00 [kworker/2:2-eve]
+  110 root      0:00 [kworker/3:1H-kb]
+  111 root      0:00 [ipv6_addrconf]
+  112 root      0:00 [krfcommd]
+  114 root      0:00 [irq/42-rga]
+  115 root      0:00 [card0-crtc0]
+  116 root      0:00 [gpu_power_off_w]
+  117 root      0:00 [free_pages_work]
+  119 root      0:00 [mmc_complete]
+  120 root      0:00 [mali-simple-pow]
+  122 root      0:00 [kworker/2:1H-kb]
+  152 root      0:00 [mmc_complete]
+  153 root      0:00 [kworker/1:1H-kb]
+  164 root      0:00 [loop0]
+  166 root      0:00 [jbd2/mmcblk0p4-]
+  167 root      0:00 [ext4-rsv-conver]
+  237 root      0:00 /usr/lib/systemd/systemd-journald
+  260 root      0:00 [kworker/1:2H-kb]
+  263 root      0:00 /usr/lib/systemd/systemd-udevd
+  358 dbus      0:01 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+  359 root      0:00 {headphone_sense} /bin/bash /usr/bin/headphone_sense.sh
+  365 root      0:00 /usr/lib/systemd/systemd-logind
+  367 root      0:00 {udt_events.sh} /bin/bash /usr/bin/udt_events.sh
+  368 root      0:02 {udt_battery.sh} /bin/bash /usr/bin/udt_battery.sh
+  373 root      1:04 {udt_pwr_events.} /bin/bash /usr/bin/udt_pwr_events.sh
+  398 root      0:00 evtest /dev/input/event4
+  399 root      0:00 {udt_events.sh} /bin/bash /usr/bin/udt_events.sh
+  408 root      0:00 /usr/sbin/connmand -nr --config=/etc/connman/main.conf
+  452 avahi     0:00 avahi-daemon: running [EMUELEC.local]
+  485 root      0:00 /usr/bin/wpa_supplicant -u
+  499 root      0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+  673 root      0:00 evtest /dev/input/event3
+  674 root      0:00 {headphone_sense} /bin/bash /usr/bin/headphone_sense.sh
+  777 root      0:00 [jbd2/mmcblk1p1-]
+  778 root      0:00 [ext4-rsv-conver]
+  807 root      0:05 [rk915_tx_thr]
+  808 root      0:10 [rk915_rx_thr]
+  809 root      0:00 [rk915_rx_wkq]
+ 1094 root     11:54 emulationstation
+ 1226 root      0:00 [kbase_event]
+36262 root      0:10 sshd: root@pts/0
+36276 root      0:00 -sh
+36351 root      1:15 htop
+42638 root      0:00 [kworker/0:0]
+45246 root      0:00 [kworker/0:3H-kb]
+46794 root      0:00 [kworker/3:0H-kb]
+51238 root      0:00 [kworker/1:0]
+51261 root      0:00 [kbase_event]
+51610 root      0:00 [kworker/2:2H]
+55534 root      0:10 [kworker/3:0-eve]
+57584 root      0:00 [kworker/0:0H]
+62726 root      0:00 [kworker/3:2-eve]
+64204 root      0:02 [kworker/u8:0-ev]
+64211 root      0:05 [kworker/u9:2-kb]
+67988 root      0:02 [kworker/u9:0-kb]
+69871 root      0:00 [kworker/u8:2-ev]
+73904 root      0:00 [kworker/u8:1-ev]
+73905 root      0:00 [kworker/3:3-eve]
+77009 root      0:00 [kworker/3:1-eve]
+77074 root      0:00 [kworker/u8:3-rk]
+79617 root      0:00 sleep 10
+79694 root      0:00 sshd: root@notty
+79704 root      0:00 sh -c  echo "==============================================================================" echo "AUDITORIA DE PROCESOS Y SERVICIOS EN TIEMPO REAL - R35 ULTRA" echo "Fecha y Hora del Sistema: $(date)" echo "Kernel: $(uname -a)" echo "Uptime: $(uptime)" echo "==============================================================================" echo "" echo "=== 1. ESTADO GENERAL DE MEMORIA RAM Y ZRAM (free -m) ===" free -m echo "" echo "=== 2. SERVICIOS SYSTEMD ACTIVOS Y EN EJECUCION ===" systemctl list-units --type=service --state=running --no-pager echo "" echo "=== 3. PUERTOS Y SOCKETS DE RED A LA ESCUCHA (netstat) ===" netstat -tulnp echo "" echo "=== 4. INSTANTANEA DE CONSUMO DE RECURSOS (top -b -n 1) ===" top -b -n 1 | head -n 35 echo "" echo "=== 5. ARBOL COMPLETO DE PROCESOS EN EJECUCION (ps -ef) ===" ps -ef echo "" echo "==============================================================================" echo "FIN DE AUDITORIA DE PROCESOS" echo "==============================================================================" 
+79714 root      0:00 sleep 0.2
+79715 root      0:00 ps -ef
+
+==============================================================================
+FIN DE AUDITORIA DE PROCESOS
+==============================================================================

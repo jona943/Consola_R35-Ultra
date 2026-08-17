@@ -69,6 +69,8 @@ venv/
 !*.dtb
 !*.dtbo
 !docs/
+!docs/logs/
+!docs/logs/*.log
 !scripts/
 !config_samples/
 !dtb_r36ultra/
