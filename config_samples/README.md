@@ -1,18 +1,18 @@
-# Ejemplos de Archivos de Configuracion Modificados
+# Ejemplos de Archivos de Configuracion y Perfiles Turbo (config_samples/)
 
-Esta carpeta contiene copias de referencia y plantillas de los archivos de configuracion criticos que fueron modificados o analizados durante el proceso de adaptacion de la consola R35 Ultra (2025/2026).
+Esta carpeta contiene copias de referencia, perfiles de rendimiento optimizados y plantillas de los archivos de configuracion criticos para la consola R35 Ultra (2025/2026).
 
 ---
 
-## Indice de Archivos:
+## Indice de Archivos de Configuracion
 
-| Archivo | Sistema | Funcion / Modificacion Realizada |
-|---|---|---|
-| [`extlinux.conf.rocknix_clean`](./extlinux.conf.rocknix_clean) | ROCKNIX (Actual) | Configuracion definitiva de arranque. Utiliza Kernel 6.x, asigna la pantalla MIPI DSI secundaria y remueve la alerta debug-shell. |
-| [`extlinux.conf.original_with_debug`](./extlinux.conf.original_with_debug) | ROCKNIX (Original) | Configuracion original con systemd.debug_shell=ttyS2 que provocaba el mensaje rojo [FAILED] al iniciar. |
-| [`001-device_config.audio_fix`](./001-device_config.audio_fix) | ROCKNIX | Configuracion de perfil profile.d que activa el modo AUDIO_MANAGEMENT=legacy para consolas clonadas. |
-| [`custom_start.sh.audio_fix`](./custom_start.sh.audio_fix) | ROCKNIX | Script de inicio automatico que desmutea los canales Master, Speaker y Playback del chip RK817 al 95%. |
-| [`es_settings.cfg.audio_fix`](./es_settings.cfg.audio_fix) | EmulationStation | Ajuste del dispositivo de audio a AudioDevice=Playback y volumen al 95%. |
-| [`boot.ini.arkos4clone`](./boot.ini.arkos4clone) | ArkOS4Clone | Archivo boot.ini utilizado en la prueba de ArkOS con frecuencias de CPU (1296 MHz) y DDR (666 MHz). |
-| [`system-dirs.conf.rocknix`](./system-dirs.conf.rocknix) | ROCKNIX | Mapeo de directorios internos del sistema donde se descubrio la ruta real /storage/games-internal/roms/. |
-| [`gamelist.xml.sample`](./gamelist.xml.sample) | EmulationStation | Estructura limpia de metadatos con titulos reales, descripciones y enlaces a caratulas oficiales en images/. |
+| Archivo | Sistema / Emulador | Funcion y Optimizaciones Incluidas |
+| :--- | :--- | :--- |
+| **`ppsspp.ini.optimized`** | PPSSPP (Sony PSP) | Perfil turbo con Overclock a 1.512 GHz, reloj emulado a 180 MHz, renderizado directo sin bufer (`SkipBufferEffects = True`) y estiramiento dinamico de audio (`AudioResampler = True`). Permite correr *God of War: Chains of Olympus* a **35-40 FPS fluidos**. |
+| **`Flycast.opt`** | Flycast (Sega Dreamcast) | Perfil de alto rendimiento con `alpha_sorting = per-strip (fast)`, eliminacion de sombras de volumen, resolucion nativa 640x480 y suavizado de cinematicas para *Legacy of Kain: Soul Reaver*. |
+| **`custom_start.sh.performance_and_audio`** | EmuELEC / Linux | Script de inicio con bloqueo de gobernador `performance` (1.512 GHz CPU / 520 MHz GPU) y generacion automatica de enlaces simbolicos de cores de emulacion. |
+| **`extlinux.conf.rocknix_clean`** | ROCKNIX (Kernel 6.x) | Configuracion definitiva de arranque para ROCKNIX con asignacion del panel MIPI DSI secundario. |
+| **`extlinux.conf.original_with_debug`** | ROCKNIX (Original) | Configuracion original con `systemd.debug_shell=ttyS2` de referencia. |
+| **`001-device_config.audio_fix`** | ROCKNIX | Configuracion `profile.d` para modo `AUDIO_MANAGEMENT=legacy` en consolas clonadas. |
+| **`boot.ini.arkos4clone`** | ArkOS4Clone | Archivo `boot.ini` utilizado en las pruebas de compatibilidad de cargadores de arranque. |
+| **`gamelist.xml.sample`** | EmulationStation | Plantilla de estructura limpia de metadatos con enlaces a caratulas oficiales HD. |
