@@ -65,13 +65,15 @@ Consola_R35-Ultra/
 
 1. **Desbloqueo Permanente de Acceso Root por SSH:**  
    Inyeccion de claves criptograficas en eMMC interna mediante arranque cruzado. Acceso directo con `ssh root@emuelec.local` o por IP sin requerir clave.
-2. **Overclock de Hardware a 1.512 GHz:**  
-   CPU fijada con gobernador `performance` (hasta 1.512 GHz) y GPU Mali-G31 a 520 MHz de forma persistente en cada inicio.
-3. **Perfil Turbo PPSSPP para PSP:**  
+2. **Gestion Dinamica de Energia y Rendimiento (408 MHz - 1.512 GHz):**  
+   CPU calibrada con gobernador `interactive` inteligente (baja a 408 MHz en reposo y escala a 1.512 GHz en <10 ms bajo carga), GPU Mali-G31 en `simple_ondemand` y ahorro de energia activo en Wi-Fi RK915.
+3. **Expansion y Optimizacion de Memoria RAM con ZRAM (512 MB ZSTD):**  
+   Activacion de dispositivo de bloque swap comprimido en memoria volatil utilizando algoritmo ZSTD de alta densidad (`vm.page-cluster = 0`, `vm.swappiness = 60`), eliminando cierres por falta de memoria (OOM) en emuladores pesados sin desgaste de disco.
+4. **Perfil Turbo PPSSPP para PSP:**  
    Reloj emulado calibrado a 180 MHz, renderizado sin bufer (`SkipBufferEffects = True`) y estiramiento dinamico de audio (`AudioResampler = True`) para eliminar cortes de sonido.
-4. **Catalogo Reducido Top 7 Esenciales:**  
+5. **Catalogo Reducido Top 7 Esenciales:**  
    63 titulos de elite en PSP, NDS, GBA, SNES, N64, PS1, Neo-Geo, CPS1/2/3 y NES con caratulas oficiales en HD vinculadas al 100%.
-5. **Herramienta Nativa en PORTS:**  
+6. **Herramienta Nativa en PORTS:**  
    `Diagnostico y Estado del Sistema` integrado directamente en el carrusel de consolas con telemetria en vivo por hardware (`text_viewer`).
 
 ---
