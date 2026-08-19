@@ -97,9 +97,35 @@ Para sortear estos limites fisicos, se implementaron soluciones a nivel de siste
 | Estado / Configuracion | Tasa de Cuadros (FPS) | Velocidad Emulacion | Calidad de Audio |
 | :--- | :--- | :--- | :--- |
 | **Configuracion Estandar (Sin optimizar)** | 12 - 16 FPS | ~40% - 50% | Cortes graves / distorsion |
-| **Optimizacion Basica (Overclock 1.5 GHz)** | 22 - 26 FPS | ~70% - 80% | Leves desincronizaciones |
 | **Optimizacion Integral (KMS + ZRAM + SkipBuffer + Clock 180MHz)** | **30 - 38 FPS** | **100% (Velocidad Real)** | **Perfecto / Sin cortes** |
-| **Cheat 60 FPS Forzado (CWCheat 60Hz)** | 32 - 42 FPS | Variable | Exige SoC superior (RK3566 / T618) |
+| **Max Turbo + Afinidad POSIX (JIT Core 3 + 60 FPS Cheat)** | **35 - 45 FPS (Open Area)** | **100% (Velocidad Real)** | **Líquido / Sin chasquidos** |
+| **Combate con Enemigos Grandes (FrameSkip 2 Auto + Duplicate 60Hz)** | **27 - 40 FPS** | **100% (Velocidad Sostenida)** | **Continuo / Sin cuelgues** |
+
+---
+
+### 4.1 Telemetria en Batallas con Enemigos Grandes y Render Duplicate Frames
+
+Durante sesiones de combate intenso contra jefes y enemigos de gran escala con las opciones `FrameSkip = 2 (Auto)` y `Render duplicate frames to 60 Hz` activas, se capturo el siguiente perfil de carga en los 4 nucleos del Cortex-A35:
+
+```
++───────────────────────────────────────────────────────────────────────────────+
+|               TELEMETRIA EN COMBATE PESADO (ENEMIGOS GRANDES)                 |
++───────────────────────────────────────────────────────────────────────────────+
+| CORE 0: 89.7% ➔ Hilo SDL / Blit de duplicacion a 60 Hz + Audio ALSA + OS      |
+| CORE 1: 43.6% ➔ Hilos secundarios de Vertices (PoolWorkers) e I/O de disco    |
+| CORE 2: 47.0% ➔ Hilo de Renderizado Grafico GPU Mali-G31 y driver             |
+| CORE 3: 66.4% ➔ Hilo JIT MIPS de Emulacion de Logica y Fisica de Kratos       |
++───────────────────────────────────────────────────────────────────────────────+
+| Tareas: 28 total (43 threads, 3 activas) | Load Avg: 2.27, 2.35, 1.56         |
+| Memoria RAM en uso: 352 MB / 977 MB      | Swap: 0 KB / 0 KB                  |
+| Uso CPU por PPSSPPSDL: 227.5%            | Tasa de cuadros: 27 a 40 FPS       |
++───────────────────────────────────────────────────────────────────────────────+
+```
+
+#### Analisis Tecnico del Comportamiento:
+1. **Pico en Core 0 (89.7%):** La opcion `Render duplicate frames to 60 Hz` fuerza al bucle principal de presentacion de video (SDL) a duplicar fotogramas para coincidir con la tasa de refresco del panel, trasladando ciclos de dibujado al Core 0.
+2. **Respuesta en Zonas Abiertas (40 FPS):** Sin enemigos en pantalla, el pipeline grafico fluye libremente y alcanza los 40 FPS estables.
+3. **Piso Minimo en Batallas Grandes (27 FPS):** La alta densidad poligonal de enemigos gigantes y efectos alfa lleva a la GPU y a la CPU a su limite fisico, donde `AutoFrameSkip = 2` entra en accion para asegurar que la velocidad de juego nunca baje del 100% de tiempo real.
 
 ---
 

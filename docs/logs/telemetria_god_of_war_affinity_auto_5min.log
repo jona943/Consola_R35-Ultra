@@ -1,0 +1,245 @@
+=== INICIO DE TELEMETRIA EN VIVO (POST-REBOOT AFINIDAD AUTOMATICA 5 MINUTOS) ===
+Inicio: Wed Aug 19 16:17:17 CST 2026
+----------------------------------------------------------------------
+[16:17:17] Muestra 1/20:
+  CPU: 1296000 kHz (performance) | Temp: 76.2 °C
+  GPU: 520000000 Hz (performance) | Bus DMC: performance
+  RAM: 327M usada / 299M libre
+  Bateria: 88% (3.941V, -645 mA, Discharging)
+  PPSSPP: PID=2793 | Top:    2793 root       1 -19 2077288 261612 159220 R 205.9  26.2   5:05.77 PPSSPPS+
+  Afinidades de hilos activas:
+    TID 2793 (PPSSPPSDL): CPU Core=17
+    TID 2840 (mali-cmar-backe): CPU Core=-1
+    TID 2847 (Emu): CPU Core=-1
+    TID 2864 (SAS): CPU Core=-1
+----------------------------------------------------------------------
+[16:17:33] Muestra 2/20:
+  CPU: 1296000 kHz (performance) | Temp: 76.5 °C
+  GPU: 520000000 Hz (performance) | Bus DMC: performance
+  RAM: 327M usada / 298M libre
+  Bateria: 88% (3.938V, -659 mA, Discharging)
+  PPSSPP: PID=2793 | Top:    2793 root       1 -19 2077288 261752 159220 R 227.8  26.2   5:41.91 PPSSPPS+
+  Afinidades de hilos activas:
+    TID 2793 (PPSSPPSDL): CPU Core=17
+    TID 2840 (mali-cmar-backe): CPU Core=-1
+    TID 2847 (Emu): CPU Core=-1
+    TID 2864 (SAS): CPU Core=-1
+----------------------------------------------------------------------
+[16:17:49] Muestra 3/20:
+  CPU: 1296000 kHz (performance) | Temp: 78.1 °C
+  GPU: 520000000 Hz (performance) | Bus DMC: performance
+  RAM: 328M usada / 297M libre
+  Bateria: 88% (3.938V, -655 mA, Discharging)
+  PPSSPP: PID=2793 | Top:    2793 root       1 -19 2077288 262348 159228 R 241.2  26.2   6:17.70 PPSSPPS+
+  Afinidades de hilos activas:
+    TID 2793 (PPSSPPSDL): CPU Core=17
+    TID 2840 (mali-cmar-backe): CPU Core=-1
+    TID 2847 (Emu): CPU Core=-1
+    TID 2864 (SAS): CPU Core=-1
+----------------------------------------------------------------------
+[16:18:05] Muestra 4/20:
+  CPU: 1296000 kHz (performance) | Temp: 77.3 °C
+  GPU: 520000000 Hz (performance) | Bus DMC: performance
+  RAM: 333M usada / 292M libre
+  Bateria: 88% (3.939V, -644 mA, Discharging)
+  PPSSPP: PID=2793 | Top:    2793 root       1 -19 2080704 265676 157372 R 211.8  26.6   6:54.02 PPSSPPS+
+  Afinidades de hilos activas:
+    TID 2793 (PPSSPPSDL): CPU Core=17
+    TID 2840 (mali-cmar-backe): CPU Core=-1
+    TID 2847 (Emu): CPU Core=-1
+    TID 2864 (SAS): CPU Core=-1
+----------------------------------------------------------------------
+[16:18:21] Muestra 5/20:
+  CPU: 1296000 kHz (performance) | Temp: 77.3 °C
+  GPU: 520000000 Hz (performance) | Bus DMC: performance
+  RAM: 333M usada / 287M libre
+  Bateria: 88% (3.938V, -645 mA, Discharging)
+  PPSSPP: PID=2793 | Top:    2793 root       1 -19 2135808 256384 147568 R 235.3  25.6   7:30.46 PPSSPPS+
+  Afinidades de hilos activas:
+    TID 2793 (PPSSPPSDL): CPU Core=17
+    TID 2840 (mali-cmar-backe): CPU Core=-1
+    TID 2847 (Emu): CPU Core=-1
+    TID 2864 (SAS): CPU Core=-1
+----------------------------------------------------------------------
+[16:18:36] Muestra 6/20:
+  CPU: 1296000 kHz (performance) | Temp: 77.7 °C
+  GPU: 520000000 Hz (performance) | Bus DMC: performance
+  RAM: 337M usada / 283M libre
+  Bateria: 88% (3.940V, -628 mA, Discharging)
+  PPSSPP: PID=2793 | Top:    2793 root       1 -19 2281572 275584 163640 S 205.9  27.6   8:05.82 PPSSPPS+
+  Afinidades de hilos activas:
+    TID 2793 (PPSSPPSDL): CPU Core=17
+    TID 2840 (mali-cmar-backe): CPU Core=-1
+    TID 2847 (Emu): CPU Core=-1
+    TID 2864 (SAS): CPU Core=-1
+----------------------------------------------------------------------
+[16:18:52] Muestra 7/20:
+  CPU: 1296000 kHz (performance) | Temp: 75.8 °C
+  GPU: 520000000 Hz (performance) | Bus DMC: performance
+  RAM: 338M usada / 283M libre
+  Bateria: 88% (3.939V, -626 mA, Discharging)
+  PPSSPP: PID=2793 | Top:    2793 root       1 -19 2281636 275932 163720 R 223.5  27.6   8:40.73 PPSSPPS+
+  Afinidades de hilos activas:
+    TID 2793 (PPSSPPSDL): CPU Core=17
+    TID 2840 (mali-cmar-backe): CPU Core=-1
+    TID 2847 (Emu): CPU Core=-1
+    TID 2864 (SAS): CPU Core=-1
+----------------------------------------------------------------------
+[16:19:08] Muestra 8/20:
+  CPU: 1296000 kHz (performance) | Temp: 75.4 °C
+  GPU: 520000000 Hz (performance) | Bus DMC: performance
+  RAM: 338M usada / 282M libre
+  Bateria: 88% (3.937V, -643 mA, Discharging)
+  PPSSPP: PID=2793 | Top:    2793 root       1 -19 2286388 280708 168484 R 241.2  28.1   9:06.42 PPSSPPS+
+  Afinidades de hilos activas:
+    TID 2793 (PPSSPPSDL): CPU Core=17
+    TID 2840 (mali-cmar-backe): CPU Core=-1
+    TID 2847 (Emu): CPU Core=-1
+    TID 2864 (SAS): CPU Core=-1
+----------------------------------------------------------------------
+[16:19:24] Muestra 9/20:
+  CPU: 1296000 kHz (performance) | Temp: 76.2 °C
+  GPU: 520000000 Hz (performance) | Bus DMC: performance
+  RAM: 338M usada / 282M libre
+  Bateria: 88% (3.936V, -640 mA, Discharging)
+  PPSSPP: PID=2793 | Top:    2793 root       1 -19 2286388 281004 168484 R 223.5  28.1   9:42.60 PPSSPPS+
+  Afinidades de hilos activas:
+    TID 2793 (PPSSPPSDL): CPU Core=17
+    TID 2840 (mali-cmar-backe): CPU Core=-1
+    TID 2847 (Emu): CPU Core=-1
+    TID 2864 (SAS): CPU Core=-1
+----------------------------------------------------------------------
+[16:19:39] Muestra 10/20:
+  CPU: 1296000 kHz (performance) | Temp: 76.9 °C
+  GPU: 520000000 Hz (performance) | Bus DMC: performance
+  RAM: 340M usada / 280M libre
+  Bateria: 88% (3.935V, -645 mA, Discharging)
+  PPSSPP: PID=2793 | Top:    2793 root       1 -19 2286896 281300 166424 R 223.5  28.1  10:18.34 PPSSPPS+
+  Afinidades de hilos activas:
+    TID 2793 (PPSSPPSDL): CPU Core=17
+    TID 2840 (mali-cmar-backe): CPU Core=-1
+    TID 2847 (Emu): CPU Core=-1
+    TID 2864 (SAS): CPU Core=-1
+----------------------------------------------------------------------
+[16:19:55] Muestra 11/20:
+  CPU: 1296000 kHz (performance) | Temp: 77.3 °C
+  GPU: 520000000 Hz (performance) | Bus DMC: performance
+  RAM: 340M usada / 280M libre
+  Bateria: 88% (3.934V, -645 mA, Discharging)
+  PPSSPP: PID=2793 | Top:    2793 root       1 -19 2286928 281544 166460 S 211.1  28.2  10:53.87 PPSSPPS+
+  Afinidades de hilos activas:
+    TID 2793 (PPSSPPSDL): CPU Core=17
+    TID 2840 (mali-cmar-backe): CPU Core=-1
+    TID 2847 (Emu): CPU Core=-1
+    TID 2864 (SAS): CPU Core=-1
+----------------------------------------------------------------------
+[16:20:11] Muestra 12/20:
+  CPU: 1296000 kHz (performance) | Temp: 76.9 °C
+  GPU: 520000000 Hz (performance) | Bus DMC: performance
+  RAM: 340M usada / 280M libre
+  Bateria: 88% (3.935V, -637 mA, Discharging)
+  PPSSPP: PID=2793 | Top:    2793 root       1 -19 2286928 281808 166460 R 243.8  28.2  11:29.21 PPSSPPS+
+  Afinidades de hilos activas:
+    TID 2793 (PPSSPPSDL): CPU Core=17
+    TID 2840 (mali-cmar-backe): CPU Core=-1
+    TID 2847 (Emu): CPU Core=-1
+    TID 2864 (SAS): CPU Core=-1
+----------------------------------------------------------------------
+[16:20:27] Muestra 13/20:
+  CPU: 1296000 kHz (performance) | Temp: 78.1 °C
+  GPU: 520000000 Hz (performance) | Bus DMC: performance
+  RAM: 341M usada / 279M libre
+  Bateria: 87% (3.932V, -657 mA, Discharging)
+  PPSSPP: PID=2793 | Top:    2793 root       1 -19 2286928 281808 166460 R 262.5  28.2  12:06.30 PPSSPPS+
+  Afinidades de hilos activas:
+    TID 2793 (PPSSPPSDL): CPU Core=17
+    TID 2840 (mali-cmar-backe): CPU Core=-1
+    TID 2847 (Emu): CPU Core=-1
+    TID 2864 (SAS): CPU Core=-1
+----------------------------------------------------------------------
+[16:20:43] Muestra 14/20:
+  CPU: 1296000 kHz (performance) | Temp: 78.1 °C
+  GPU: 520000000 Hz (performance) | Bus DMC: performance
+  RAM: 345M usada / 274M libre
+  Bateria: 87% (3.932V, -652 mA, Discharging)
+  PPSSPP: PID=2793 | Top:    2793 root       1 -19 2289996 284676 164400 R 256.2  28.5  12:42.96 PPSSPPS+
+  Afinidades de hilos activas:
+    TID 2793 (PPSSPPSDL): CPU Core=17
+    TID 2840 (mali-cmar-backe): CPU Core=-1
+    TID 2847 (Emu): CPU Core=-1
+    TID 2864 (SAS): CPU Core=-1
+----------------------------------------------------------------------
+[16:20:58] Muestra 15/20:
+  CPU: 1296000 kHz (performance) | Temp: 75.0 °C
+  GPU: 520000000 Hz (performance) | Bus DMC: performance
+  RAM: 351M usada / 269M libre
+  Bateria: 87% (3.951V, -528 mA, Discharging)
+  PPSSPP: PID=2793 | Top:    2793 root       1 -19 2294500 290132 163752 R 231.2  29.0  13:08.72 PPSSPPS+
+  Afinidades de hilos activas:
+    TID 2793 (PPSSPPSDL): CPU Core=17
+    TID 2840 (mali-cmar-backe): CPU Core=-1
+    TID 2847 (Emu): CPU Core=-1
+    TID 2864 (SAS): CPU Core=-1
+----------------------------------------------------------------------
+[16:21:14] Muestra 16/20:
+  CPU: 1296000 kHz (performance) | Temp: 78.1 °C
+  GPU: 520000000 Hz (performance) | Bus DMC: performance
+  RAM: 352M usada / 267M libre
+  Bateria: 87% (3.932V, -647 mA, Discharging)
+  PPSSPP: PID=2793 | Top:    2793 root       1 -19 2294628 290264 163884 R 247.1  29.0  13:45.65 PPSSPPS+
+  Afinidades de hilos activas:
+    TID 2793 (PPSSPPSDL): CPU Core=17
+    TID 2840 (mali-cmar-backe): CPU Core=-1
+    TID 2847 (Emu): CPU Core=-1
+    TID 2864 (SAS): CPU Core=-1
+----------------------------------------------------------------------
+[16:21:30] Muestra 17/20:
+  CPU: 1296000 kHz (performance) | Temp: 77.7 °C
+  GPU: 520000000 Hz (performance) | Bus DMC: performance
+  RAM: 352M usada / 268M libre
+  Bateria: 87% (3.931V, -649 mA, Discharging)
+  PPSSPP: PID=2793 | Top:    2793 root       1 -19 2294628 290264 163884 R 216.7  29.0  14:22.60 PPSSPPS+
+  Afinidades de hilos activas:
+    TID 2793 (PPSSPPSDL): CPU Core=17
+    TID 2840 (mali-cmar-backe): CPU Core=-1
+    TID 2847 (Emu): CPU Core=-1
+    TID 2864 (SAS): CPU Core=-1
+----------------------------------------------------------------------
+[16:21:46] Muestra 18/20:
+  CPU: 1296000 kHz (performance) | Temp: 78.8 °C
+  GPU: 520000000 Hz (performance) | Bus DMC: performance
+  RAM: 352M usada / 267M libre
+  Bateria: 87% (3.930V, -649 mA, Discharging)
+  PPSSPP: PID=2793 | Top:    2793 root       1 -19 2294628 290264 163884 S 210.5  29.0  14:58.98 PPSSPPS+
+  Afinidades de hilos activas:
+    TID 2793 (PPSSPPSDL): CPU Core=17
+    TID 2840 (mali-cmar-backe): CPU Core=-1
+    TID 2847 (Emu): CPU Core=-1
+    TID 2864 (SAS): CPU Core=-1
+----------------------------------------------------------------------
+[16:22:01] Muestra 19/20:
+  CPU: 1296000 kHz (performance) | Temp: 77.3 °C
+  GPU: 520000000 Hz (performance) | Bus DMC: performance
+  RAM: 351M usada / 268M libre
+  Bateria: 87% (3.932V, -639 mA, Discharging)
+  PPSSPP: PID=2793 | Top:    2793 root       1 -19 2294628 290264 163884 R 217.6  29.0  15:32.61 PPSSPPS+
+  Afinidades de hilos activas:
+    TID 2793 (PPSSPPSDL): CPU Core=17
+    TID 2840 (mali-cmar-backe): CPU Core=-1
+    TID 2847 (Emu): CPU Core=-1
+    TID 2864 (SAS): CPU Core=-1
+----------------------------------------------------------------------
+[16:22:17] Muestra 20/20:
+  CPU: 1296000 kHz (performance) | Temp: 78.5 °C
+  GPU: 520000000 Hz (performance) | Bus DMC: performance
+  RAM: 352M usada / 267M libre
+  Bateria: 87% (3.930V, -648 mA, Discharging)
+  PPSSPP: PID=2793 | Top:    2793 root       1 -19 2294628 290264 163884 R 229.4  29.0  16:08.84 PPSSPPS+
+  Afinidades de hilos activas:
+    TID 2793 (PPSSPPSDL): CPU Core=17
+    TID 2840 (mali-cmar-backe): CPU Core=-1
+    TID 2847 (Emu): CPU Core=-1
+    TID 2864 (SAS): CPU Core=-1
+----------------------------------------------------------------------
+=== FIN DE TELEMETRIA (SESION COMPLETADA) ===
+Fin: Wed Aug 19 16:22:33 CST 2026
