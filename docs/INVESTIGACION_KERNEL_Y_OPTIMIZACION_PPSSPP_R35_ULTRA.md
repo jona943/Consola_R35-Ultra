@@ -129,6 +129,42 @@ Durante sesiones de combate intenso contra jefes y enemigos de gran escala con l
 
 ---
 
+### 4.2 El Descubrimiento del Cuello de Botella Monohilo y la Afinidad Quirurgica de 4 Nucleos
+
+A traves del monitoreo en vivo con `htop` durante 45+ minutos de juego ininterrumpido en combate pesado, se descubrio la dinamica de reparto de carga real entre los hilos del emulador y los 4 nucleos Cortex-A35:
+
+#### Las 3 Fases de Optimizacion de Afinidad:
+
+```
++─────────────────────────────────────────────────────────────────────────────────────────+
+|               EVOLUCION DEL REPARTO DE CARGA EN LOS 4 NUCLEOS (HTOP LIVE)               |
++─────────────────────────────────────────────────────────────────────────────────────────+
+| NUCLEO | FASE 1: DESBALANCE INICIAL | FASE 2: DESCARGA DE AUDIO | FASE 3: QUIRURGICA FINAL  |
++────────+────────────────────────────+───────────────────────────+───────────────────────────+
+| CORE 0 |   97.4% (🔥 Bloqueo Blit)  |   27.8% (❄️ Libre ALSA)   |   35.0% - 45.0% (ALSA/OS) |
+| CORE 1 |   43.8% (Ocioso)           |   53.6% (Audio SAS)       |   70.0% - 75.0% (Mali/SAS)|
+| CORE 2 |   57.1%                    |   38.3% (💤 Desaprovech.) |   70.0% - 72.0% (Workers) |
+| CORE 3 |   42.4%                    |   97.4% (🔥 Tirón JIT)    |   75.0% - 80.0% (JIT MIPS)|
++─────────────────────────────────────────────────────────────────────────────────────────+
+```
+
+#### Hallazgos y Soluciones de Ingenieria Inversa:
+
+1. **El Problema del Core 0 en Fase 1:**  
+   Al activar `Render duplicate frames to 60 Hz`, el hilo de presentacion de video SDL y el driver de sonido ALSA compartian el Core 0 con las interrupciones de red Wi-Fi `wlan0`. El nucleo se asfixiaba al 97.4%, causando micro-congelamientos en la emision de audio y perdida de fluidez.
+2. **El Problema del Core 3 en Fase 2 (El "Tirón de Combate"):**  
+   Al aislar el audio en el Core 0, el hilo maestro JIT MIPS (`Emu`) saturo el Core 3 al 97.4% durante batallas con varios enemigos grandes, mientras que el Core 2 permanecia semidormido al 38.3%.
+3. **La Solucion Quirurgica Definitiva (Fase 3):**  
+   Se implemento un supervisor automatico en Python (`ppsspp_affinity_optimizer.py`) que utiliza llamadas al sistema POSIX (`os.sched_setaffinity`) para forzar:
+   * **Core 2:** Asume el 100% de los hilos de calculo de vertices (`PoolWorkers 0 a 7`), elevando su utilizacion de 38% a ~70%.
+   * **Core 3:** Queda 100% exclusivo para la ejecucion limpia del recompilador JIT de Kratos, bajando su carga del 97.4% al rango seguro de ~75% - 80%.
+   * **Core 1:** Procesa el driver gráfico Mali-G31 (`mali-utility-wo`, `mali-cmar-backe`) y la sintesis SAS.
+   * **Core 0:** Gestiona el bucle de eventos y el búfer de audio ALSA con mas del 60% de margen libre.
+4. **Bloqueo Rigido de Frecuencia GPU (Devfreq):**  
+   Se bloqueo el valor de `/sys/class/devfreq/ff400000.gpu/min_freq` en `520000000 Hz` (520 MHz), evitando que la GPU Mali-G31 reduzca su reloj en micropausas entre fotogramas.
+
+---
+
 ## 5. Referencias Tecnicas y Fuentes Bibliograficas
 
 1. **ARM Developer:** *Cortex-A35 Processor Technical Reference Manual (Revision r0p3)* - Caracteristicas de ejecucion In-Order, pipeline de 8 etapas y unidad NEON SIMD.
