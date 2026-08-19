@@ -1,42 +1,65 @@
-# Configuracion Optimizada de PPSSPP Standalone para RK3326 (Mali-G31 MP2)
-# Calibracion especial para titulos pesados (God of War, Tekken 6, GTA) a 30-60 FPS
+# Configuracion Max Turbo de PPSSPP Standalone para RK3326 (Mali-G31 MP2)
+# Calibracion Maxima Velocidad (40-45 FPS) para God of War: Chains of Olympus
 
 [Graphics]
 GraphicsBackend = 0 (OPENGL)
 RenderingMode = 0
 InternalResolution = 1
+AndroidHwScale = 1
 FrameSkip = 1
 FrameSkipType = 0
 AutoFrameSkip = True
 FrameSkipUnthrottle = True
 SkipBufferEffects = True
 SkipGPUReadbackMode = 1
+InflightFrames = 2
 FastMemory = True
 VertexCache = True
 HardwareTransform = True
-SoftwareSkinning = False
+SoftwareSkinning = True
 TextureBackoffCache = True
+TextureSecondaryCache = True
 TextureFiltering = 1
 BufferFiltering = 1
 SplineQuality = 0
 SoftwareRenderer = False
 DisableAlphaTest = True
+FragmentTestCache = True
 PrescaleUV = True
+DisableSlowFramebufReads = True
+ShowFPSCounter = 1
+AnisotropyLevel = 0
+MultiSampleLevel = 0
+
+[CPU]
+CPUCore = 1
+SeparateSASThread = True
+SeparateIOThread = True
+IOTimingMethod = 0
+FastMemoryAccess = True
+FunctionReplacements = True
+PreloadFunctions = True
+CPUSpeed = 222
 
 [Sound]
 Enable = True
 AudioBackend = 0
-AudioLatency = 2
+AudioLatency = 3
 ExtraAudioBuffering = True
 SoundSpeedHack = True
 AudioResampler = True
 GlobalVolume = 10
+AltSpeedVolume = -1
+AudioDevice = 
+AutoAudioDevice = True
 
-[SystemParam]
-PSPModel = 0
-ForceMaxCPU = True
-LockedCPUSpeed = 222
+[General]
+CacheFullIsoInRam = True
+EnableCheats = True
 
 [SpeedHacks]
 PrescaleUV = True
 DisableAlphaTest = True
+
+[SystemParam]
+PSPModel = 1

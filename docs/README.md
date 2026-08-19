@@ -15,7 +15,7 @@ Este directorio contiene las bitacoras de pruebas de sistemas operativos, guias 
 | **`GUIA_MIGRACION_Y_SISTEMAS_R35_ULTRA.md`** | Guia tecnica detallada sobre la estructura de particiones, compatibilidad del kernel Linux 6.x vs 4.4 y metodos de instalacion. |
 | **`DIAGNOSTICO_Y_PLAN_LIMPIEZA.md`** | Plan de auditoria y curacion del almacenamiento, eliminacion de ROMs corruptas y diseno de la coleccion esencial. |
 | **`JUEGOS_PENDIENTES.md`** | Lista de candidatos y juegos deseados para futuras ampliaciones en PlayStation 1 y otras plataformas aprovechando el espacio libre de la MicroSD. |
-| **`logs/`** | Directorio de evidencias en crudo con volcados de diagnostico en vivo capturados por SSH. |
+| **`logs/`** | Directorio de evidencias en crudo con volcados de telemetria en vivo (5 sesiones de gameplay en God of War, monitoreo de CPU a 1.512 GHz, temperaturas de 58-73 C, consumo de bateria y Software Skinning) capturados por SSH. |
 
 ---
 

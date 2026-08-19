@@ -73,12 +73,33 @@ for d in ['/storage/cores', '/tmp/cores']:
             if not os.path.exists(alias_dst): os.symlink(f, alias_dst)
 " 2>/dev/null || true
 
-# Desbloqueo de SSH y contrasena permanente
-echo "root:emuelec" | chpasswd 2>/dev/null || true
-echo "emuelec:emuelec" | chpasswd 2>/dev/null || true
-sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config 2>/dev/null || true
-sed -i "s/#PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config 2>/dev/null || true
-sed -i "s/PermitRootLogin prohibit-password/PermitRootLogin yes/g" /etc/ssh/sshd_config 2>/dev/null || true
-sed -i "s/#PermitRootLogin yes/PermitRootLogin yes/g" /etc/ssh/sshd_config 2>/dev/null || true
+# ==============================================================================
+# 5. HABILITACION PERMANENTE DE ACCESO SSH POR CONTRASENA (root:emuelec)
+# ==============================================================================
+mkdir -p /storage/.config/ssh /storage/.config/auth
+
+# Desbloqueo y persistencia de sshd_config con PasswordAuthentication yes
+if [ ! -f /storage/.config/ssh/sshd_config ]; then
+    cp /etc/ssh/sshd_config /storage/.config/ssh/sshd_config
+    sed -i "s/#PasswordAuthentication yes/PasswordAuthentication yes/g" /storage/.config/ssh/sshd_config
+    sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/g" /storage/.config/ssh/sshd_config
+    sed -i "s/PermitRootLogin prohibit-password/PermitRootLogin yes/g" /storage/.config/ssh/sshd_config
+    sed -i "s/#PermitRootLogin yes/PermitRootLogin yes/g" /storage/.config/ssh/sshd_config
+fi
+mount --bind /storage/.config/ssh/sshd_config /etc/ssh/sshd_config 2>/dev/null || true
+
+# Inyeccion de contrasena 'emuelec' permanente en shadow
+python3 -c "
+import crypt
+pwd_hash = crypt.crypt('emuelec', crypt.mksalt(crypt.METHOD_SHA512))
+for path in ['/storage/.cache/shadow', '/storage/.config/auth/shadow']:
+    try:
+        with open(path, 'r') as f: lines = f.readlines()
+        new_lines = [f'root:{pwd_hash}:19500:0:99999:7:::\n' if l.startswith('root:') else l for l in lines]
+        with open(path, 'w') as f: f.writelines(new_lines)
+    except Exception: pass
+" 2>/dev/null || true
+
+systemctl restart sshd 2>/dev/null || kill -HUP $(pidof sshd | head -n 1) 2>/dev/null || true
 
 exit 0

@@ -69,8 +69,8 @@ Consola_R35-Ultra/
    CPU calibrada con gobernador `interactive` inteligente (baja a 408 MHz en reposo y escala a 1.512 GHz en <10 ms bajo carga), GPU Mali-G31 en `simple_ondemand` y ahorro de energia activo en Wi-Fi RK915.
 3. **Expansion y Optimizacion de Memoria RAM con ZRAM (512 MB ZSTD):**  
    Activacion de dispositivo de bloque swap comprimido en memoria volatil utilizando algoritmo ZSTD de alta densidad (`vm.page-cluster = 0`, `vm.swappiness = 60`), eliminando cierres por falta de memoria (OOM) en emuladores pesados sin desgaste de disco.
-4. **Perfil Turbo PPSSPP para PSP:**  
-   Reloj emulado calibrado a 180 MHz, renderizado sin bufer (`SkipBufferEffects = True`) y estiramiento dinamico de audio (`AudioResampler = True`) para eliminar cortes de sonido.
+4. **Perfil Turbo PPSSPP y Software Skinning para PSP:**  
+   Reloj emulado a 222 MHz, desbloqueo de motor a 60 FPS (`_C1 60 FPS`), `SoftwareSkinning = True` (asistencia de CPU ARM NEON a la GPU Mali-G31), mapeo completo de gatillos traseros (L1/L2/R1/R2) y estiramiento dinamico de audio (`AudioResampler = True`) con anillo de bufer ALSA elastico.
 5. **Catalogo Reducido Top 7 Esenciales:**  
    63 titulos de elite en PSP, NDS, GBA, SNES, N64, PS1, Neo-Geo, CPS1/2/3 y NES con caratulas oficiales en HD vinculadas al 100%.
 6. **Herramienta Nativa en PORTS:**  
@@ -80,13 +80,18 @@ Consola_R35-Ultra/
 
 ## 5. Acceso Rapido por SSH
 
-Para acceder a la consola desde cualquier terminal en la misma red Wi-Fi:
+Para acceder a la consola desde cualquier terminal o dispositivo en la misma red Wi-Fi:
 
 ```bash
+# Conexion por mDNS (desde Linux/macOS):
 ssh root@emuelec.local
-# o directamente por IP asignada:
-ssh root@192.168.1.69
+
+# O directamente por IP:
+ssh root@192.168.1.64
 ```
+
+* **Usuario:** `root`
+* **Contraseña:** `emuelec` (Habilitada de forma permanente para cualquier computadora, SFTP, WinSCP o FileZilla).
 
 ---
 
