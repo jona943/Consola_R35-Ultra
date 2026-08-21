@@ -1,6 +1,6 @@
 import os, time, glob
 
-time.sleep(2.0)
+time.sleep(1.0)
 pid = None
 
 for _ in range(10):
@@ -14,13 +14,13 @@ for _ in range(10):
     time.sleep(1)
 
 if not pid or not os.path.exists(f"/proc/{pid}"):
-    pids = [int(p) for p in os.listdir("/proc") if p.isdigit() and os.path.exists(f"/proc/{p}/comm") and open(f"/proc/{p}/comm").read().strip() == "PPSSPPSDL"]
+    pids = [int(p) for p in os.listdir("/proc") if p.isdigit() and os.path.exists(f"/proc/{p}/comm") and open(f"/proc/{p}/comm").read().strip().lower() in ["ppsspp", "ppssppsdl"]]
     if pids:
         pid = pids[0]
     else:
         exit(0)
 
-print(f"Aplicando balanceo quirurgico anti-tirones para PID {pid}...")
+print(f"=== APLICANDO AFINIDAD QUIRURGICA EXACTA PARA ROCKNIX (PID {pid}) ===")
 
 for task_dir in glob.glob(f"/proc/{pid}/task/*"):
     try:
@@ -28,23 +28,23 @@ for task_dir in glob.glob(f"/proc/{pid}/task/*"):
         with open(f"{task_dir}/comm", "r") as f:
             comm = f.read().strip()
         
-        # 1. Hilo JIT MIPS de Kratos: Core 3 EXCLUSIVO
-        if comm == "Emu":
+        # 1. Hilo JIT MIPS (Emu o EmuThread): Core 3 EXCLUSIVO
+        if "emu" in comm.lower():
             os.sched_setaffinity(tid, {3})
-            assigned = "Core {3} (Exclusivo JIT MIPS)"
+            assigned = "Core {3} (Exclusivo JIT MIPS EmuThread)"
             
-        # 2. Hilos de Vertices (PoolWorkers 0-7) e I/O: Core 2 EXCLUSIVO (Eleva Core 2 de 38% a 70%)
-        elif "PoolWorker" in comm or comm == "IO":
+        # 2. Hilos de Vertices (PoolW / PoolWorker) e I/O: Core 2 EXCLUSIVO
+        elif "poolw" in comm.lower() or comm == "IO":
             os.sched_setaffinity(tid, {2})
-            assigned = "Core {2} (Vertex PoolWorkers & IO)"
+            assigned = "Core {2} (Vertex PoolW & IO)"
             
-        # 3. Renderizado y Driver GPU Mali: Core 1
-        elif comm in ["PPSSPPSDL", "mali-cmar-backe"] or "mali" in comm:
+        # 3. Renderizado y Driver GPU Mesa Panfrost: Core 1
+        elif "mali" in comm.lower() or "panfrost" in comm.lower() or comm.lower() in ["ppsspp", "ppssppsdl"]:
             os.sched_setaffinity(tid, {1})
-            assigned = "Core {1} (Render & Mali GPU Driver)"
+            assigned = "Core {1} (Render & Panfrost GPU Driver)"
             
-        # 4. Audio SAS, ALSA y Ring Buffer: Core 0
-        elif comm in ["SAS", "SDLAudioP2", "SDLHotplugALSA"]:
+        # 4. Audio SAS, ALSA, PulseAudio / PipeWire: Core 0
+        elif comm in ["SAS", "SDLAudioP2", "SDLHotplugALSA", "PulseMainloop", "PulseHotplug"]:
             os.sched_setaffinity(tid, {0})
             assigned = "Core {0} (Audio Engine & System)"
             
