@@ -1,26 +1,31 @@
-CXX ?= g++
 CC ?= gcc
-CXXFLAGS = -std=c++20 -O3 -Wall -Wextra -pthread -I./include
-CFLAGS = -O3 -Wall -Wextra -pthread -I./include
+CFLAGS = -std=c11 -O3 -Wall -Wextra -pthread -I./include
 LDFLAGS = -pthread -lrt
 
-# Targets
-all: bin/ram_orchestrator bin/test_benchmark
+CROSS_CC = aarch64-linux-gnu-gcc
+CROSS_CFLAGS = -std=c11 -O3 -mcpu=cortex-a35 -march=armv8-a+simd -Wall -Wextra -pthread -I./include
 
-bin/ram_orchestrator: src/ram_orchestrator.cpp src/texture_vault.cpp src/neon_geometry.c
+all: bin/ram_orchestrator bin/test_benchmark aarch64
+
+bin/ram_orchestrator: src/ram_orchestrator.c src/texture_vault.c src/neon_geometry.c
 	@mkdir -p bin
-	$(CXX) $(CXXFLAGS) -o $@ src/ram_orchestrator.cpp src/texture_vault.cpp src/neon_geometry.c $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-bin/test_benchmark: src/test_benchmark.cpp src/texture_vault.cpp src/neon_geometry.c
+bin/test_benchmark: src/test_benchmark.c src/texture_vault.c src/neon_geometry.c
 	@mkdir -p bin
-	$(CXX) $(CXXFLAGS) -o $@ src/test_benchmark.cpp src/texture_vault.cpp src/neon_geometry.c $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-# Compilación cruzada para la consola R35 Ultra (ARM64 Cortex-A35 NEON)
-aarch64:
+# Compilación cruzada para la consola R35 Ultra (Cortex-A35 NEON)
+aarch64: bin_aarch64/ram_orchestrator bin_aarch64/test_benchmark
+
+bin_aarch64/ram_orchestrator: src/ram_orchestrator.c src/texture_vault.c src/neon_geometry.c
 	@mkdir -p bin_aarch64
-	aarch64-linux-gnu-g++ -std=c++20 -O3 -mcpu=cortex-a35 -march=armv8-a+simd -pthread -I./include -o bin_aarch64/ram_orchestrator src/ram_orchestrator.cpp src/texture_vault.cpp src/neon_geometry.c -lrt
-	aarch64-linux-gnu-g++ -std=c++20 -O3 -mcpu=cortex-a35 -march=armv8-a+simd -pthread -I./include -o bin_aarch64/test_benchmark src/test_benchmark.cpp src/texture_vault.cpp src/neon_geometry.c -lrt
-	@echo "=== BINARIOS ARM64 COMPILADOS CON EXITO PARA R35 ULTRA ==="
+	$(CROSS_CC) $(CROSS_CFLAGS) -o $@ $^ $(LDFLAGS)
+
+bin_aarch64/test_benchmark: src/test_benchmark.c src/texture_vault.c src/neon_geometry.c
+	@mkdir -p bin_aarch64
+	$(CROSS_CC) $(CROSS_CFLAGS) -o $@ $^ $(LDFLAGS)
+	@echo "=== ¡BINARIOS ARM64 CORTEX-A35 COMPILADOS CON EXITO! ==="
 
 clean:
 	rm -rf bin bin_aarch64
