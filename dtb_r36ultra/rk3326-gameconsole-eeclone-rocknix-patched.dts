@@ -132,7 +132,12 @@
 			opp-hz = <0x00 0x54667200>;
 			opp-microvolt = <0x149970 0x149970 0x149970>;
 			clock-latency-ns = <0x9c40>;
-			turbo-mode;
+		};
+
+		opp-1512000000 {
+			opp-hz = <0x00 0x5a1f4a00>;
+			opp-microvolt = <0x14fb18 0x14fb18 0x14fb18>;
+			clock-latency-ns = <0x9c40>;
 		};
 	};
 
@@ -1383,12 +1388,12 @@
 		reg = <0x00 0xff400000 0x00 0x4000>;
 		interrupts = <0x00 0x2f 0x04 0x00 0x2e 0x04 0x00 0x2d 0x04>;
 		interrupt-names = "job\0mmu\0gpu";
-		clocks = <0x02 0x49>;
-		clock-names = "bus";
+		clocks = <0x02 0x49 0x02 0xaa>;
+		clock-names = "clk_mali bus";
 		resets = <0x02 0x12>;
 		#cooling-cells = <0x02>;
 		power-domains = <0x75 0x0e>;
-		power_policy = "coarse_demand";
+		power_policy = "always_on";
 		operating-points-v2 = <0x91>;
 		status = "okay";
 		mali-supply = <0x27>;
